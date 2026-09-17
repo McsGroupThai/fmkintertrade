@@ -1,0 +1,783 @@
+<title>คู่มือผู้ใช้ FMK Intertrade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#F5F7F3;
+    --surface:#FFFFFF;
+    --sunk:#EFF3EC;
+    --ink:#1B2328;
+    --dim:#5D6A63;
+    --line:#DCE3DD;
+    --head:#0A2439;
+    --gold:#B08A38;
+    --blue:#0E5B91;
+    --warn:#8A5200;
+    --warn-bg:#FBF1DF;
+    --warn-line:#E7CFA0;
+    --danger:#A8261E;
+    --danger-bg:#FBECEA;
+    --danger-line:#EEC2BC;
+    --ok:#17693F;
+    --ok-bg:#E8F3EC;
+    --ok-line:#B3D6C1;
+    --sans:'IBM Plex Sans Thai', 'Segoe UI', system-ui, sans-serif;
+    --mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#12171A; --surface:#1A2126; --sunk:#222B31;
+      --ink:#E4EAE5; --dim:#9AA8A0; --line:#2E393F;
+      --head:#DCE8F0; --gold:#D8B268; --blue:#7FB6DE;
+      --warn:#E0B36A; --warn-bg:#2B2416; --warn-line:#4A3C1F;
+      --danger:#F0968C; --danger-bg:#2E1A18; --danger-line:#4E2A26;
+      --ok:#7FCFA0; --ok-bg:#16261D; --ok-line:#26452F;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#12171A; --surface:#1A2126; --sunk:#222B31;
+    --ink:#E4EAE5; --dim:#9AA8A0; --line:#2E393F;
+    --head:#DCE8F0; --gold:#D8B268; --blue:#7FB6DE;
+    --warn:#E0B36A; --warn-bg:#2B2416; --warn-line:#4A3C1F;
+    --danger:#F0968C; --danger-bg:#2E1A18; --danger-line:#4E2A26;
+    --ok:#7FCFA0; --ok-bg:#16261D; --ok-line:#26452F;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%
+  }
+  .page{max-width:800px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+
+  .masthead{padding-block:56px 40px;border-bottom:2px solid var(--gold)}
+  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 14px}
+  h1{
+    font-family:var(--sans);font-weight:700;font-size:clamp(29px,6vw,42px);
+    line-height:1.28;color:var(--head);margin:0;text-wrap:balance;letter-spacing:-.018em
+  }
+  .standfirst{font-size:17px;line-height:1.7;color:var(--dim);margin:18px 0 0;max-width:60ch}
+  .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:var(--dim)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  .toc{margin-block:36px 8px}
+  .toc h2{font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600;margin:0 0 14px}
+  .toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 24px;counter-reset:toc}
+  .toc li{counter-increment:toc}
+  .toc a{display:flex;gap:11px;align-items:baseline;padding:7px 0;color:var(--ink);text-decoration:none;font-size:15px}
+  .toc a::before{content:counter(toc,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--gold);flex:none;letter-spacing:.04em}
+  .toc a:hover{color:var(--blue)}
+
+  section{margin-top:52px;scroll-margin-top:20px}
+  h2.sec{
+    font-family:var(--sans);font-weight:700;font-size:clamp(20px,3.4vw,25px);
+    line-height:1.38;color:var(--head);margin:0 0 6px;display:flex;gap:13px;align-items:baseline;
+    text-wrap:balance;letter-spacing:-.012em
+  }
+  h2.sec .n{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--gold);flex:none;letter-spacing:.04em;transform:translateY(-2px)}
+  .rule{height:1px;background:var(--line);margin:0 0 22px}
+  h3{font-family:var(--sans);font-weight:600;font-size:16px;color:var(--head);margin:30px 0 8px}
+  p{margin:0 0 15px;max-width:68ch}
+  ul,ol.steps{margin:0 0 16px;padding-left:22px;max-width:66ch}
+  li{margin-bottom:7px}
+  a{color:var(--blue)}
+  strong{font-weight:600}
+
+  .ui{font-size:.93em;font-weight:500;background:var(--sunk);border:1px solid var(--line);border-radius:5px;padding:1px 7px;white-space:nowrap}
+  code{font-family:var(--mono);font-size:.86em;background:var(--sunk);border-radius:5px;padding:2px 6px;word-break:break-all}
+
+  /* ---------- screenshots ---------- */
+  figure{
+    margin:0 0 26px;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:10px;break-inside:avoid
+  }
+  figure img{
+    display:block;width:100%;height:auto;max-width:100%;
+    border-radius:7px;border:1px solid var(--line)
+  }
+  figcaption{
+    font-size:13px;line-height:1.6;color:var(--dim);
+    padding:11px 6px 3px;display:flex;gap:9px;align-items:baseline
+  }
+  figcaption b{
+    /* ป้าย "ภาพ N" เป็นข้อความไทย จึงต้องใช้ฟอนต์ไทย
+       ถ้าตั้งเป็น monospace ฟอนต์นั้นไม่มีอักษรไทย เบราว์เซอร์จะไปหยิบ Tahoma มาแทนเงียบ ๆ
+       ผลคือ PDF มีฟอนต์ปนสองตระกูลโดยไม่มีใครสังเกต */
+    color:var(--gold);font-size:10.5px;letter-spacing:.06em;
+    text-transform:uppercase;flex:none;font-weight:600
+  }
+
+  .flow{margin:6px 0 24px;padding:26px 24px;border-radius:14px;background:var(--surface);border:1px solid var(--line);break-inside:avoid}
+  .flow-steps{display:flex;gap:0;align-items:stretch;flex-wrap:wrap}
+  .step{flex:1 1 170px;min-width:0;padding-right:20px}
+  .step + .step{padding-left:20px;border-left:1px solid var(--line)}
+  /* "ขั้นที่ 1" ก็เป็นข้อความไทย ด้วยเหตุผลเดียวกับป้ายภาพ */
+  .step .sn{font-size:11px;font-weight:500;color:var(--gold);letter-spacing:.06em;display:block;margin-bottom:7px}
+  .step h4{font-family:var(--sans);font-weight:700;font-size:16.5px;color:var(--head);margin:0 0 6px;letter-spacing:-.008em}
+  .step p{font-size:13.5px;line-height:1.65;color:var(--dim);margin:0}
+  @media (max-width:560px){
+    .step{padding-right:0}
+    .step + .step{padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+  }
+
+  .note{border-radius:12px;padding:16px 18px;margin:0 0 20px;border:1px solid var(--line);background:var(--surface);font-size:14.5px;line-height:1.7;break-inside:avoid}
+  .note p{margin:0;max-width:none}
+  .note p + p{margin-top:9px}
+  .note .t{font-weight:600;display:block;margin-bottom:5px}
+  .note.warn{background:var(--warn-bg);border-color:var(--warn-line)}
+  .note.warn .t{color:var(--warn)}
+  .note.stop{background:var(--danger-bg);border-color:var(--danger-line)}
+  .note.stop .t{color:var(--danger)}
+  .note.good{background:var(--ok-bg);border-color:var(--ok-line)}
+  .note.good .t{color:var(--ok)}
+
+  .tw{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);break-inside:avoid}
+  table{border-collapse:collapse;width:100%;min-width:420px;font-size:14.5px}
+  th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+  th{background:var(--sunk);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:600;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:500;white-space:nowrap}
+  table.wrap1 td:first-child{white-space:normal}
+
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0 0 20px;font-size:14.5px;align-items:baseline}
+  .kv dt{color:var(--dim)}
+  .kv dd{margin:0;font-weight:500}
+
+  footer{margin-top:64px;padding-top:26px;border-top:2px solid var(--gold);font-size:13.5px;color:var(--dim)}
+  footer p{max-width:none}
+
+  /* ---------- print / PDF ---------- */
+  @page{margin:16mm 15mm 18mm}
+  @media print{
+    :root{
+      --ground:#FFFFFF; --surface:#FFFFFF; --sunk:#F2F5F0;
+      --ink:#14191D; --dim:#4C5852; --line:#C9D2CB;
+      --head:#0A2439; --gold:#8A6B24; --blue:#0B4C7A;
+    }
+    body{background:#fff;font-size:11.5pt;line-height:1.65}
+    .page{max-width:none;padding:0}
+    .masthead{padding-block:0 26px;break-after:avoid}
+    h1{font-size:26pt}
+    .standfirst{font-size:12pt}
+    .toc{break-after:page}
+    .toc ol{grid-template-columns:1fr 1fr}
+    section{margin-top:26px;break-inside:auto}
+    h2.sec{font-size:16pt;break-after:avoid}
+    h3{break-after:avoid}
+    figure{padding:6px;break-inside:avoid}
+    figure img{border-color:#C9D2CB}
+    .note,.tw,.flow{break-inside:avoid}
+    a{color:#0B4C7A;text-decoration:none}
+    footer{break-inside:avoid}
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <p class="kicker">FMK Intertrade · ระบบจัดการเว็บไซต์</p>
+    <h1>คู่มือผู้ใช้ระบบหลังบ้าน</h1>
+    <p class="standfirst">
+      เว็บไซต์ <code>fmkintertrade.shop</code> แก้ไขเนื้อหาได้เองผ่านหน้าเว็บ ไม่ต้องเขียนโค้ด
+      คู่มือนี้อธิบายทุกอย่างที่ต้องรู้ อ่านครั้งแรกให้จบ แล้วเก็บไว้เปิดดูเฉพาะหัวข้อที่ต้องใช้
+    </p>
+    <div class="meta">
+      <span>ที่อยู่หลังบ้าน <b>fmkintertrade.shop/admin</b></span>
+      <span>ฉบับวันที่ <b>17 กันยายน 2569</b> · ปรับปรุงครั้งที่ 2</span>
+      <span>ชื่อและอีเมลในภาพประกอบเป็น <b>ตัวอย่าง</b></span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="สารบัญ">
+    <h2>สารบัญ</h2>
+    <ol>
+      <li><a href="#s1">เข้าสู่ระบบครั้งแรก</a></li>
+      <li><a href="#s2">หน้าจอมีอะไรบ้าง</a></li>
+      <li><a href="#s3">กฎข้อเดียวที่ต้องจำ</a></li>
+      <li><a href="#s4">แก้ไขเนื้อหา</a></li>
+      <li><a href="#s5">รูปภาพ</a></li>
+      <li><a href="#s6">คำขอจากลูกค้า</a></li>
+      <li><a href="#s7">เผยแพร่และย้อนกลับ</a></li>
+      <li><a href="#s8">บัญชีของฉัน</a></li>
+      <li><a href="#s9">จัดการผู้ใช้งาน</a></li>
+      <li><a href="#s10">ปัญหาที่พบบ่อย</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1">
+    <h2 class="sec"><span class="n">01</span>เข้าสู่ระบบครั้งแรก</h2>
+    <div class="rule"></div>
+
+    <p>เข้าได้สองทาง เลือกทางไหนก็ได้ ปลายทางเดียวกัน</p>
+
+    <h3>ทางที่ 1 — ผ่านหน้าเว็บ</h3>
+    <p>
+      เปิด <code>fmkintertrade.shop</code> ตามปกติ แล้ว<strong>เลื่อนลงล่างสุดของหน้า</strong>
+      จะเห็นลิงก์ <span class="ui">เข้าสู่ระบบผู้ดูแล</span> อยู่มุมขวาล่าง แถวเดียวกับนโยบายความเป็นส่วนตัว
+    </p>
+
+    <figure>
+      <img src="img/footer-login.png" alt="ส่วนท้ายเว็บไซต์ ลิงก์เข้าสู่ระบบผู้ดูแลอยู่ขวาสุดของแถวล่างสุด">
+      <figcaption><b>ภาพ 1</b><span>ส่วนท้ายของเว็บไซต์ — ลิงก์อยู่ขวาสุดของแถวล่างสุด ถัดจาก “แผนผังเว็บไซต์”</span></figcaption>
+    </figure>
+
+    <p>
+      ทางนี้เหมาะกับการใช้งานทั่วไป เพราะไม่ต้องจำที่อยู่อะไรเลย เปิดเว็บบริษัทแล้วเลื่อนลงล่างสุด
+      ลิงก์นี้เห็นได้ทั้งบนคอมพิวเตอร์และมือถือ
+    </p>
+
+    <h3>ทางที่ 2 — พิมพ์ที่อยู่ตรง</h3>
+    <p>เร็วกว่าถ้าใช้บ่อย แนะนำให้บันทึกไว้ในบุ๊กมาร์ก</p>
+    <p><code>https://fmkintertrade.shop/admin/login.php</code></p>
+
+    <figure>
+      <img src="img/login.png" alt="หน้าเข้าสู่ระบบ มีช่องอีเมลและรหัสผ่าน">
+      <figcaption><b>ภาพ 2</b><span>หน้าเข้าสู่ระบบ — ไม่มีปุ่มสมัครสมาชิก บัญชีต้องให้ผู้ดูแลระบบสร้างให้เท่านั้น</span></figcaption>
+    </figure>
+
+    <p>
+      ใส่อีเมลและรหัสผ่านที่ผู้ดูแลระบบส่งให้ <strong>ครั้งแรกที่เข้า ระบบจะบังคับให้ตั้งรหัสผ่านใหม่ทันที</strong>
+      ก่อนทำอย่างอื่นได้ เพราะรหัสที่ส่งต่อกันมานั้นผ่านมือคนอื่นแล้ว
+    </p>
+
+    <h3>กติกาของรหัสผ่าน</h3>
+    <ul>
+      <li>อย่างน้อย <strong>12 ตัวอักษร</strong></li>
+      <li>ต้องไม่ซ้ำกับรหัสอีเมลของบริษัทหรือรหัสอื่นที่ใช้อยู่</li>
+      <li>จำไม่ไหวให้ใช้ตัวจัดการรหัสผ่าน อย่าจดใส่กระดาษแปะหน้าจอ</li>
+    </ul>
+
+    <div class="note">
+      <span class="t">บัญชีนี้เป็นคนละบัญชีกับอีเมลบริษัท</span>
+      <p>ใช้เข้าได้เฉพาะหลังบ้านเว็บไซต์เท่านั้น การเปลี่ยนรหัสที่นี่ไม่กระทบอีเมลหรือระบบอื่นใดของบริษัท</p>
+    </div>
+
+    <div class="note warn">
+      <span class="t">ใส่รหัสผิด 5 ครั้งจะถูกล็อก 15 นาที</span>
+      <p>เป็นการป้องกันคนไล่เดารหัส ถ้าโดนล็อกให้รอครบ 15 นาทีแล้วลองใหม่ ไม่ต้องแจ้งใคร</p>
+    </div>
+
+    <p>
+      ระบบจะให้ล็อกอินใหม่เมื่อไม่มีความเคลื่อนไหวเกิน <strong>30 นาที</strong>
+      และอย่างช้าที่สุดทุก <strong>8 ชั่วโมง</strong> ถึงจะไม่ได้ปิดหน้าต่างก็ตาม
+    </p>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <h2 class="sec"><span class="n">02</span>หน้าจอมีอะไรบ้าง</h2>
+    <div class="rule"></div>
+
+    <p>เข้ามาแล้วจะเจอหน้าหลัก ซึ่งสรุปทุกอย่างไว้ในหน้าเดียว</p>
+
+    <figure>
+      <img src="img/index.png" alt="หน้าหลักของระบบ แสดงเมนูด้านบน แถบสถานะ และการ์ดงานหลัก 4 ใบ">
+      <figcaption><b>ภาพ 3</b><span>หน้าหลัก — เมนูอยู่บนสุด ถัดลงมาคือแถบสถานะของเว็บจริง แล้วจึงเป็นงานหลัก 4 อย่าง</span></figcaption>
+    </figure>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>เมนู</th><th>ใช้ทำอะไร</th></tr></thead>
+        <tbody>
+          <tr><td>หน้าหลัก</td><td>ภาพรวม จำนวนเนื้อหาแต่ละชนิด และความเคลื่อนไหวล่าสุด</td></tr>
+          <tr><td>เนื้อหาเว็บไซต์</td><td>แก้ข้อความทุกจุดบนหน้าเว็บ ทั้งไทยและอังกฤษ</td></tr>
+          <tr><td>รูปภาพ</td><td>อัปโหลดและเก็บรูปไว้ใช้ในหน้าเว็บ</td></tr>
+          <tr><td>กล่องข้อความ</td><td>คำขอติดต่อที่ลูกค้าส่งเข้ามาจากแบบฟอร์มบนเว็บ</td></tr>
+          <tr><td>ตรวจและเผยแพร่</td><td>ดูตัวอย่าง กดขึ้นเว็บจริง และย้อนกลับเวอร์ชันเก่า</td></tr>
+          <tr><td>ผู้ใช้งาน</td><td>เพิ่มและจัดการบัญชี — เห็นเฉพาะผู้ดูแลระบบ</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>แถบสถานะใต้เมนู</h3>
+    <p>แถบนี้อยู่ทุกหน้า บอกสถานะของเว็บจริงตลอดเวลา มีสองแบบเท่านั้น</p>
+    <dl class="kv">
+      <dt><span class="ui">เว็บเป็นเวอร์ชันล่าสุดแล้ว</span></dt>
+      <dd>ไม่มีงานค้าง สิ่งที่คุณเห็นในหลังบ้าน = สิ่งที่ลูกค้าเห็น</dd>
+      <dt><span class="ui">มีฉบับร่างที่ยังไม่ได้เผยแพร่</span></dt>
+      <dd>คุณแก้อะไรไว้แล้วแต่ยังไม่ได้กดขึ้นเว็บ ลูกค้ายังเห็นของเดิม</dd>
+    </dl>
+
+    <h3>มุมขวาบน</h3>
+    <ul>
+      <li><span class="ui">ดูหน้าเว็บ</span> — เปิดเว็บจริงในแท็บใหม่</li>
+      <li><strong>ชื่อของคุณ</strong> — กดแล้วไปหน้าบัญชีของฉัน เปลี่ยนรหัสผ่านได้ที่นั่น</li>
+      <li><strong>ป้ายสิทธิ์</strong> — บอกว่าคุณเป็นผู้ดูแลระบบหรือผู้แก้ไขเนื้อหา</li>
+      <li><span class="ui">ออกจากระบบ</span> — กดทุกครั้งเมื่อใช้เครื่องที่คนอื่นใช้ร่วม</li>
+    </ul>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <h2 class="sec"><span class="n">03</span>กฎข้อเดียวที่ต้องจำ</h2>
+    <div class="rule"></div>
+
+    <p>
+      <strong>การแก้ไขจะไม่ขึ้นเว็บจริงจนกว่าจะกดเผยแพร่</strong>
+      นี่เป็นเรื่องตั้งใจ คุณจึงแก้ค้างไว้ข้ามวันได้ แก้ผิดแล้วแก้ใหม่ได้ โดยที่ลูกค้าไม่เห็นอะไรผิดปกติเลย
+    </p>
+
+    <div class="flow">
+      <div class="flow-steps">
+        <div class="step">
+          <span class="sn">ขั้นที่ 1</span>
+          <h4>แก้และบันทึกร่าง</h4>
+          <p>พิมพ์แก้ในหน้าเนื้อหาเว็บไซต์ แล้วกดบันทึกฉบับร่าง เก็บไว้ในระบบ ยังไม่ขึ้นเว็บ</p>
+        </div>
+        <div class="step">
+          <span class="sn">ขั้นที่ 2</span>
+          <h4>ดูตัวอย่าง</h4>
+          <p>เปิดดูว่าหน้าเว็บจะออกมาหน้าตาแบบไหน ตรวจให้ครบทั้งไทยและอังกฤษ</p>
+        </div>
+        <div class="step">
+          <span class="sn">ขั้นที่ 3</span>
+          <h4>เผยแพร่</h4>
+          <p>กดปุ่มเดียว เว็บจริงเปลี่ยนทันที และระบบเก็บสำเนาเวอร์ชันเก่าไว้ให้ย้อนกลับได้</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note good">
+      <span class="t">ถ้าจำได้ข้อเดียว ให้จำข้อนี้</span>
+      <p>แก้แล้วเว็บไม่เปลี่ยน = ยังไม่ได้กดเผยแพร่ ไม่ใช่ระบบเสีย</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <h2 class="sec"><span class="n">04</span>แก้ไขเนื้อหา</h2>
+    <div class="rule"></div>
+
+    <p>
+      เข้าเมนู <span class="ui">เนื้อหาเว็บไซต์</span> เนื้อหาทั้งเว็บถูกจัดเป็นหมวดตามตำแหน่งที่ปรากฏจริงบนหน้าเว็บ
+      เลือกหมวดจากแถบด้านซ้าย
+    </p>
+
+    <figure>
+      <img src="img/content-hero.png" alt="หน้าแก้ไขเนื้อหา แสดงแถบหมวดด้านซ้าย และช่องกรอกภาษาอังกฤษกับภาษาไทยวางคู่กัน">
+      <figcaption><b>ภาพ 4</b><span>ช่องภาษาอังกฤษและภาษาไทยวางคู่กันเสมอ ระบบตั้งใจให้เห็นพร้อมกันเพื่อไม่ให้ลืมแก้ฝั่งใดฝั่งหนึ่ง</span></figcaption>
+    </figure>
+
+    <div class="tw">
+      <table class="wrap1">
+        <thead><tr><th>หมวด</th><th>คุมส่วนไหนของหน้าเว็บ</th></tr></thead>
+        <tbody>
+          <tr><td>ข้อมูลบริษัท</td><td>ที่อยู่ เบอร์โทร อีเมล ช่องทางติดต่อ</td></tr>
+          <tr><td>หน้าแรก</td><td>แบนเนอร์ใหญ่ จุดเด่น 4 ข้อ เกี่ยวกับ FMK ทำไมต้อง FMK ส่วนชวนติดต่อ</td></tr>
+          <tr><td>บริการและโซลูชัน</td><td>การ์ดบริการทั้ง 6 ใบ</td></tr>
+          <tr><td>ผลงาน</td><td>โครงการที่แสดงบนเว็บ</td></tr>
+          <tr><td>บทความ</td><td>บทความที่แสดงบนหน้าแรก</td></tr>
+          <tr><td>สาขาและการติดต่อ</td><td>สาขาในไทยและต่างประเทศ กล่องติดต่อ และชื่อช่องในแบบฟอร์ม</td></tr>
+          <tr><td>เมนูและส่วนท้าย</td><td>แถบบนสุด เมนูนำทาง ข้อความบนปุ่ม ส่วนท้ายเว็บ</td></tr>
+          <tr><td>ข้อความระบบ</td><td>ข้อความช่วยผู้ใช้โปรแกรมอ่านหน้าจอ และคำบรรยายใต้โลโก้</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>ไทยและอังกฤษอยู่คู่กันเสมอ</h3>
+    <p>
+      ทุกข้อความมีสองช่อง วางคู่กัน <strong>แก้ฝั่งหนึ่งแล้วต้องแก้อีกฝั่งด้วย</strong>
+      ไม่งั้นลูกค้าต่างชาติจะเห็นข้อความเก่า
+    </p>
+
+    <h3>บันทึกฉบับร่าง</h3>
+    <p>
+      กด <span class="ui">บันทึกฉบับร่าง</span> เมื่อแก้เสร็จแต่ละรอบ กดบ่อยได้ไม่มีผลเสีย
+      ถ้าพยายามปิดหน้าต่างทั้งที่ยังไม่บันทึก เบราว์เซอร์จะเตือนก่อน
+    </p>
+
+    <h3>รายการที่เพิ่ม ลบ และซ่อนได้</h3>
+    <p>หมวดบริการ ผลงาน บทความ สาขา และช่องทางติดต่อ เป็นรายการที่จัดการทีละชิ้นได้</p>
+
+    <figure>
+      <img src="img/content.png" alt="รายการช่องทางติดต่อ แต่ละชิ้นมีปุ่มซ่อน ลูกศรเลื่อนขึ้นลง และปุ่มลบ">
+      <figcaption><b>ภาพ 5</b><span>แต่ละรายการมีปุ่มของตัวเอง — ซ่อน · เลื่อนขึ้น · เลื่อนลง · ลบ</span></figcaption>
+    </figure>
+
+    <ul>
+      <li><span class="ui">เพิ่มรายการ</span> — เพิ่มชิ้นใหม่ต่อท้าย ชิ้นใหม่จะถูกตั้งเป็นซ่อนไว้ก่อนเสมอ กรอกให้ครบแล้วค่อยเปิดแสดง</li>
+      <li><span class="ui">ซ่อน</span> — เอาออกจากหน้าเว็บชั่วคราวโดยไม่ลบข้อมูล กดอีกครั้งเพื่อเอากลับมาแสดง</li>
+      <li><span class="ui">เลื่อนขึ้น</span> <span class="ui">เลื่อนลง</span> — สลับลำดับการแสดงผลบนหน้าเว็บ</li>
+      <li><span class="ui">ลบ</span> — เอาออกถาวร</li>
+    </ul>
+
+    <div class="note warn">
+      <span class="t">ไม่แน่ใจให้ซ่อน อย่าลบ</span>
+      <p>
+        รายการที่ซ่อนจะหายจากหน้าเว็บทันทีเหมือนลบ แต่ข้อมูลยังอยู่ครบ เปิดกลับมาเมื่อไหร่ก็ได้
+        ส่วนการลบนั้นถ้ากดเผยแพร่ไปแล้ว จะเอากลับได้ก็ต่อเมื่อย้อนทั้งเวอร์ชัน ซึ่งจะย้อนงานอื่นกลับไปด้วย
+      </p>
+    </div>
+
+    <h3>บทความ — เขียนให้เสร็จก่อน ค่อยเปิดให้คนอ่าน</h3>
+
+    <p>
+      การ์ดบทความบนหน้าเว็บมีสองสถานะคือ <strong>ปิด</strong> กับ <strong>เปิด</strong>
+      ตอนนี้บทความทั้งสามชิ้นปิดอยู่ทั้งหมด การ์ดจึงไม่มีคำว่า “อ่านต่อ” ให้กดเลย
+      ซึ่งตรงกับความจริงว่ายังไม่มีเนื้อหาให้อ่าน
+    </p>
+
+    <figure>
+      <img src="img/content-article.png" alt="หน้าแก้ไขบทความ แสดงช่องเปิดให้กดอ่านเนื้อหาเต็ม และรายการย่อหน้าที่ยังว่างอยู่">
+      <figcaption><b>ภาพ 6</b><span>บทความหนึ่งชิ้น — ช่องติ๊กเปิดอยู่กลางภาพ ใต้ลงมาคือที่เก็บย่อหน้าซึ่งยังว่าง</span></figcaption>
+    </figure>
+
+    <ol class="steps">
+      <li>ไปที่ <span class="ui">เนื้อหาเว็บไซต์</span> แล้วเลือกหมวด <span class="ui">รายการบทความ</span> จากนั้นเลือกบทความที่ต้องการ</li>
+      <li>ที่กรอบ <strong>ย่อหน้า</strong> กด <span class="ui">+ เพิ่มรายการ</span> แล้วพิมพ์เนื้อหาหนึ่งย่อหน้า ทั้งช่องไทยและอังกฤษ</li>
+      <li>อยากได้กี่ย่อหน้าก็กด <span class="ui">+ เพิ่มรายการ</span> ไปเรื่อย ๆ</li>
+      <li>เขียนเสร็จแล้วจึงติ๊ก <span class="ui">เปิดให้กดอ่านเนื้อหาเต็ม</span></li>
+      <li>กด <span class="ui">บันทึกฉบับร่าง</span> แล้วตรวจและเผยแพร่ตามปกติ</li>
+    </ol>
+
+    <p>
+      พอเผยแพร่แล้ว การ์ดใบนั้นจะมีคำว่า <strong>อ่านต่อ</strong> ขึ้นมา
+      ผู้อ่านกดแล้วบทความจะเปิดขึ้นในหน้าเดิม ไม่ต้องกระโดดไปหน้าอื่น
+    </p>
+
+    <div class="note">
+      <span class="t">ต้องครบสองอย่าง ไม่ใช่อย่างเดียว</span>
+      <p>
+        ถ้าติ๊กเปิดไว้แต่ยังไม่ได้พิมพ์ย่อหน้าเลยสักย่อหน้า การ์ดจะยังไม่มีปุ่มให้กด
+        ระบบตั้งใจทำแบบนี้ เพราะกดแล้วเจอหน้าต่างเปล่าแย่กว่าไม่มีปุ่มให้กด
+      </p>
+    </div>
+
+    <div class="note">
+      <span class="t">เขียนค้างไว้ได้ ไม่มีใครเห็น</span>
+      <p>
+        เนื้อหาของบทความที่ยังปิดอยู่ <strong>ไม่ถูกส่งขึ้นหน้าเว็บเลย</strong> แม้แต่ในโค้ดเบื้องหลัง
+        เขียนไม่เสร็จแล้วทิ้งไว้ข้ามวันข้ามสัปดาห์ได้ ไม่มีใครอ่านเจอ และ Google ก็ไม่เก็บไปแสดงในผลค้นหา
+      </p>
+    </div>
+
+    <h3>หน้านโยบายความเป็นส่วนตัว</h3>
+
+    <p>
+      เว็บไซต์มีหน้านโยบายความเป็นส่วนตัวแยกอีกหนึ่งหน้าที่
+      <span class="ui">fmkintertrade.shop/privacy.html</span>
+      ผู้เข้าชมไปถึงได้จากลิงก์ท้ายเว็บ และจากในแบบฟอร์มติดต่อใต้ช่องติ๊กยินยอม
+    </p>
+
+    <p>
+      แก้ข้อความได้ที่ <span class="ui">เนื้อหาเว็บไซต์</span> แล้วเลือกหมวด <span class="ui">นโยบายความเป็นส่วนตัว</span>
+      วิธีแก้เหมือนเนื้อหาส่วนอื่นทุกประการ และต้องกดเผยแพร่เหมือนกัน
+    </p>
+
+    <div class="note warn">
+      <span class="t">สองจุดที่ควรให้ผู้รับผิดชอบยืนยันก่อน</span>
+      <p>
+        หัวข้อ 7 ของนโยบายระบุว่าเก็บข้อความจากแบบฟอร์มไว้ <strong>2 ปี</strong>
+        และเก็บบันทึกกันสแปมไว้ <strong>90 วัน</strong> เป็นตัวเลขตั้งต้นที่บริษัทเปลี่ยนเองได้
+        นอกจากนี้ถ้าเซิร์ฟเวอร์ที่ใช้อยู่ตั้งอยู่นอกประเทศไทย ต้องเพิ่มข้อความแจ้งเรื่องการส่งข้อมูลข้ามประเทศด้วย
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <h2 class="sec"><span class="n">05</span>รูปภาพ</h2>
+    <div class="rule"></div>
+
+    <p>
+      เมนู <span class="ui">รูปภาพ</span> คือคลังกลาง อัปโหลดเก็บไว้ที่นี่ครั้งเดียว แล้วเรียกใช้ในหน้าเนื้อหาได้ทุกจุด
+    </p>
+
+    <figure>
+      <img src="img/media.png" alt="หน้าคลังรูปภาพ มีช่องลากไฟล์มาวางและรายการรูปที่อัปโหลดไว้">
+      <figcaption><b>ภาพ 7</b><span>คลังรูปภาพ — ลากไฟล์มาวางได้เลย หรือกดเลือกไฟล์จากเครื่อง</span></figcaption>
+    </figure>
+
+    <dl class="kv">
+      <dt>ชนิดไฟล์</dt><dd>JPG · PNG · WebP</dd>
+      <dt>ขนาดไฟล์</dt><dd>ไม่เกิน 16 MB ต่อรูป</dd>
+      <dt>ระบบจัดการให้เอง</dt><dd>หมุนรูปจากมือถือให้ตั้งตรง ย่อรูปใหญ่ให้พอดีเว็บ และสร้างรูปย่อ</dd>
+    </dl>
+
+    <p>
+      ถ่ายจากมือถือแล้วอัปได้เลย ไม่ต้องย่อมาก่อน
+      แต่ระบบจะแสดง <strong>ทั้งรูปตามที่อัปขึ้นไป</strong> ยังตัดรูปในระบบไม่ได้
+      ถ้าอยากได้เฉพาะบางส่วนของภาพ ให้ตัดมาก่อนแล้วค่อยอัป
+    </p>
+
+    <h3>ใส่รูปเข้าหน้าเว็บ</h3>
+    <ol class="steps">
+      <li>ไปที่ <span class="ui">เนื้อหาเว็บไซต์</span> หารายการที่ต้องการใส่รูป</li>
+      <li>กด <span class="ui">เลือกรูปจากคลัง</span> แล้วเลือกรูป (ถ้ามีรูปอยู่แล้วปุ่มจะเป็น <span class="ui">เปลี่ยนรูป</span>)</li>
+      <li>กรอกช่อง <strong>คำบรรยายรูป</strong></li>
+      <li>กด <span class="ui">บันทึกฉบับร่าง</span></li>
+    </ol>
+
+    <div class="note">
+      <span class="t">คำบรรยายรูปไม่ใช่ช่องที่ข้ามได้</span>
+      <p>
+        คนตาบอดใช้โปรแกรมอ่านหน้าจอ ซึ่งอ่านข้อความนี้แทนการเห็นรูป และ Google ใช้ข้อความนี้เข้าใจว่ารูปคืออะไร
+        เขียนสั้น ๆ ว่าในรูปมีอะไร เช่น “โรงเรือนปศุสัตว์ระบบอีแวปที่จังหวัดสระบุรี” ไม่ใช่ “รูปที่ 1”
+      </p>
+    </div>
+
+    <p>
+      การลบรูปออกจากคลังทำได้ แต่ถ้ารูปนั้นถูกใช้อยู่ในหน้าเว็บ ให้ไปเปลี่ยนรูปในหน้าเนื้อหาก่อน ไม่งั้นจุดนั้นจะกลายเป็นรูปว่าง
+    </p>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <h2 class="sec"><span class="n">06</span>คำขอจากลูกค้า</h2>
+    <div class="rule"></div>
+
+    <p>
+      แบบฟอร์มติดต่อบนหน้าเว็บส่งข้อมูลเข้ามาเก็บที่เมนู <span class="ui">กล่องข้อความ</span>
+      ตัวเลขข้างชื่อเมนูคือจำนวนที่ยังไม่ได้อ่าน
+    </p>
+
+    <figure>
+      <img src="img/messages.png" alt="กล่องข้อความ แสดงแท็บสถานะและรายการคำขอจากลูกค้า">
+      <figcaption><b>ภาพ 8</b><span>กล่องข้อความ — แถวสีอ่อนคือคำขอที่ยังไม่มีใครเปิดอ่าน</span></figcaption>
+    </figure>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>แท็บ</th><th>หมายถึง</th></tr></thead>
+        <tbody>
+          <tr><td>ยังไม่ได้อ่าน</td><td>เข้ามาใหม่ ยังไม่มีใครเปิดดู</td></tr>
+          <tr><td>อ่านแล้ว</td><td>เปิดดูแล้ว กำลังดำเนินการอยู่</td></tr>
+          <tr><td>เก็บเข้าคลัง</td><td>จบเรื่องแล้ว เก็บไว้เป็นประวัติ</td></tr>
+          <tr><td>ทั้งหมด</td><td>ทุกสถานะรวมกัน</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      กด <span class="ui">เปิดอ่าน</span> เพื่อดูรายละเอียดครบทุกช่องที่ลูกค้ากรอก การเปิดอ่านจะเปลี่ยนสถานะให้อัตโนมัติ
+      ปุ่ม <span class="ui">ดาวน์โหลดทั้งหมดเป็น CSV</span> ใช้ส่งต่อให้ฝ่ายขายหรือเปิดใน Excel
+    </p>
+
+    <div class="note warn">
+      <span class="t">ระบบไม่ได้ตอบลูกค้าให้</span>
+      <p>
+        ระบบเก็บข้อมูลอย่างเดียว การติดต่อกลับเป็นหน้าที่ของคนทำงาน ใช้อีเมลหรือเบอร์โทรที่ลูกค้าให้ไว้
+      </p>
+      <p>
+        และ <strong>ระบบไม่ส่งอีเมลแจ้งเตือนเมื่อมีคำขอใหม่</strong> ต้องเข้ามาเปิดดูเอง
+        จึงควรตกลงกันให้ชัดว่าใครเป็นคนเปิดกล่องข้อความ และเปิดวันละกี่ครั้ง
+      </p>
+    </div>
+
+    <p>
+      ระบบคัดกรองบอทให้อยู่แล้วหลายชั้น คำขอที่เห็นในกล่องจึงผ่านการคัดมาแล้ว
+      ถ้าเจอข้อความขยะหลุดเข้ามา กด <span class="ui">ลบ</span> ได้เลย
+    </p>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <h2 class="sec"><span class="n">07</span>เผยแพร่และย้อนกลับ</h2>
+    <div class="rule"></div>
+
+    <p>เมนู <span class="ui">ตรวจและเผยแพร่</span> คือจุดเดียวที่ทำให้เว็บจริงเปลี่ยน</p>
+
+    <figure>
+      <img src="img/publish.png" alt="หน้าเผยแพร่และประวัติ แสดงสถานะปัจจุบัน ปุ่มเผยแพร่ และตารางประวัติการเผยแพร่">
+      <figcaption><b>ภาพ 9</b><span>หน้าเผยแพร่ — ทุกครั้งที่กด ระบบเก็บสำเนาไว้ในตารางประวัติด้านล่าง</span></figcaption>
+    </figure>
+
+    <h3>ก่อนกดเผยแพร่</h3>
+    <ol class="steps">
+      <li>กด <span class="ui">ดูตัวอย่างฉบับร่าง</span></li>
+      <li>ไล่ดูให้ครบ <strong>ทั้งภาษาไทยและอังกฤษ</strong> สลับภาษาที่ปุ่มมุมขวาบนของหน้าเว็บ</li>
+      <li>กดปุ่ม <span class="ui">ดูหน้านโยบาย</span> บนแถบสีเข้มด้านบน เพื่อตรวจหน้านโยบายความเป็นส่วนตัวด้วย</li>
+      <li>ย่อหน้าต่างให้แคบหรือเปิดบนมือถือ ดูว่าหน้าตายังเรียบร้อย</li>
+      <li>กลับมากรอก <strong>บันทึกช่วยจำ</strong> สั้น ๆ ว่าแก้อะไร เช่น “แก้เบอร์โทรสาขาเวียงจันทน์”</li>
+      <li>กด <span class="ui">เผยแพร่</span></li>
+    </ol>
+
+    <div class="note">
+      <span class="t">เว็บมีสองหน้า เผยแพร่พร้อมกันเสมอ</span>
+      <p>
+        การกดเผยแพร่หนึ่งครั้งจะเขียนใหม่ทั้ง <strong>หน้าแรก</strong> และ
+        <strong>หน้านโยบายความเป็นส่วนตัว</strong> พร้อมกัน ข้อความยืนยันจะบอกขนาดของทั้งสองไฟล์
+        แยกเผยแพร่ทีละหน้าไม่ได้ และไม่จำเป็นต้องแยก
+      </p>
+    </div>
+
+    <p>
+      บันทึกช่วยจำไม่บังคับ แต่มีประโยชน์มากในวันที่ต้องย้อนกลับ เพราะจะรู้ทันทีว่าควรย้อนไปเวอร์ชันไหน
+    </p>
+
+    <h3>ย้อนกลับเวอร์ชันเก่า</h3>
+    <p>
+      ทุกครั้งที่เผยแพร่ ระบบเก็บสำเนาไว้ในตาราง <strong>ประวัติการเผยแพร่</strong>
+      กด <span class="ui">ย้อนกลับ</span> ที่เวอร์ชันที่ต้องการ
+    </p>
+
+    <div class="note">
+      <span class="t">การย้อนกลับมีสองจังหวะ ไม่ใช่จังหวะเดียว</span>
+      <p>
+        กดย้อนกลับ = ดึงเนื้อหาเก่ามาเป็น <strong>ฉบับร่าง</strong> เท่านั้น เว็บจริงยังไม่เปลี่ยน
+        ให้ตรวจดูตัวอย่างก่อน แล้วจึงกดเผยแพร่อีกครั้ง
+      </p>
+    </div>
+
+    <p>การย้อนกลับเวอร์ชันทำได้เฉพาะผู้ดูแลระบบ ส่วนการเผยแพร่ตามปกติทำได้ทั้งสองสิทธิ์</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <h2 class="sec"><span class="n">08</span>บัญชีของฉัน</h2>
+    <div class="rule"></div>
+
+    <p>กดที่ชื่อของคุณมุมขวาบนเพื่อเข้าหน้านี้ ทำได้สามอย่าง</p>
+
+    <figure>
+      <img src="img/account.png" alt="หน้าบัญชีของฉัน มีส่วนเปลี่ยนรหัสผ่าน เปลี่ยนชื่อที่แสดง และรายการอุปกรณ์ที่ล็อกอินอยู่">
+      <figcaption><b>ภาพ 10</b><span>บัญชีของฉัน — เปลี่ยนรหัสผ่านของตัวเองได้ที่นี่ที่เดียว</span></figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>เปลี่ยนรหัสผ่าน</strong> — ต้องใส่รหัสเดิมก่อน กันคนอื่นมาเปลี่ยนตอนคุณลุกจากโต๊ะ</li>
+      <li><strong>เปลี่ยนชื่อที่แสดง</strong> — ชื่อที่คนอื่นเห็นในประวัติการแก้ไข</li>
+      <li><strong>ดูและออกจากระบบอุปกรณ์อื่น</strong> — เห็นว่าบัญชีคุณเปิดค้างอยู่ที่ไหนบ้าง</li>
+    </ul>
+
+    <div class="note warn">
+      <span class="t">เผลอเข้าหลังบ้านจากเครื่องคนอื่นแล้วลืมออก</span>
+      <p>เข้าหน้านี้แล้วสั่งออกจากระบบอุปกรณ์อื่นทั้งหมด เครื่องที่คุณใช้อยู่ตอนนี้จะไม่ถูกเตะออก</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <h2 class="sec"><span class="n">09</span>จัดการผู้ใช้งาน</h2>
+    <div class="rule"></div>
+
+    <p>หัวข้อนี้เฉพาะ <strong>ผู้ดูแลระบบ</strong> เมนู <span class="ui">ผู้ใช้งาน</span></p>
+
+    <figure>
+      <img src="img/users.png" alt="หน้าผู้ใช้งาน แสดงตารางบัญชีทั้งหมดพร้อมสิทธิ์และปุ่มจัดการ">
+      <figcaption><b>ภาพ 11</b><span>แถวของตัวคุณเองจะขึ้นป้ายกำกับไว้ และมีปุ่มไม่เหมือนแถวของคนอื่น</span></figcaption>
+    </figure>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>สิทธิ์</th><th>ทำอะไรได้</th></tr></thead>
+        <tbody>
+          <tr><td>ผู้แก้ไขเนื้อหา</td><td>แก้เนื้อหา จัดการรูป อ่านกล่องข้อความ และเผยแพร่</td></tr>
+          <tr><td>ผู้ดูแลระบบ</td><td>ทุกอย่างข้างต้น บวกกับย้อนกลับเวอร์ชัน และจัดการบัญชีผู้ใช้</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>ให้สิทธิ์เท่าที่แต่ละคนต้องใช้จริง คนที่มีหน้าที่แก้ข้อความอย่างเดียว ไม่จำเป็นต้องเป็นผู้ดูแลระบบ</p>
+
+    <h3>เพิ่มบัญชีใหม่</h3>
+    <p>
+      กรอกอีเมลและเลือกสิทธิ์ ระบบจะสุ่มรหัสผ่านให้และ <strong>แสดงเพียงครั้งเดียว</strong>
+      คัดลอกส่งให้เจ้าตัวก่อนปิดหน้า เขาจะถูกบังคับให้ตั้งรหัสใหม่ทันทีที่เข้าครั้งแรก
+    </p>
+    <p>
+      ส่งรหัสให้เจ้าตัว <strong>คนละช่องทางกับที่ส่งชื่ออีเมล</strong> เช่น อีเมลบอกชื่อบัญชี แล้วโทรบอกรหัส
+    </p>
+
+    <h3>ลืมรหัสผ่าน</h3>
+    <p>
+      ให้ผู้ดูแลระบบอีกคนกด <span class="ui">ตั้งรหัสใหม่</span> ที่แถวของคนนั้น ระบบจะสุ่มรหัสใหม่ให้และเตะเขาออกจากทุกอุปกรณ์
+    </p>
+
+    <div class="note stop">
+      <span class="t">ต้องมีผู้ดูแลระบบอย่างน้อยสองคนเสมอ</span>
+      <p>
+        ระบบนี้ <strong>ไม่มีปุ่มส่งลิงก์กู้รหัสทางอีเมล</strong> — เป็นการตัดสินใจที่ตั้งใจ เพราะต้องพึ่งบริการภายนอกซึ่งเพิ่มทั้งค่าใช้จ่ายและช่องโหว่
+        การกู้จึงทำโดยผู้ดูแลอีกคนเท่านั้น <strong>ถ้าผู้ดูแลลืมรหัสพร้อมกันทุกคน จะเข้าหลังบ้านไม่ได้เลย</strong>
+        และต้องเรียกช่างเข้าไปแก้ที่เซิร์ฟเวอร์
+      </p>
+      <p>ระบบจึงไม่ยอมให้ลบหรือลดสิทธิ์ผู้ดูแลระบบคนสุดท้ายที่เหลืออยู่</p>
+    </div>
+
+    <div class="note warn">
+      <span class="t">อย่ากดตั้งรหัสใหม่ใส่ตัวเอง</span>
+      <p>
+        ระบบจะสุ่มรหัสให้แล้วเตะคุณออกทันที ถ้าคัดลอกไม่ทันจะเข้าไม่ได้
+        แถวของคุณเองจึงขึ้นเป็นลิงก์ <span class="ui">เปลี่ยนรหัสของฉัน</span> แทน ใช้ทางนั้น
+      </p>
+    </div>
+
+    <p>
+      เมื่อมีคนลาออก ให้ตั้งสถานะเป็น <strong>ปิดการใช้งาน</strong> แทนการลบ
+      เพราะการลบจะทำให้ชื่อในประวัติการแก้ไขหายไปด้วย
+    </p>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <h2 class="sec"><span class="n">10</span>ปัญหาที่พบบ่อย</h2>
+    <div class="rule"></div>
+
+    <div class="tw">
+      <table class="wrap1">
+        <thead><tr><th>อาการ</th><th>สาเหตุและวิธีแก้</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>แก้แล้ว แต่เปิดเว็บจริงยังเป็นของเดิม</td>
+            <td>สาเหตุที่พบบ่อยที่สุดคือยังไม่ได้กดเผยแพร่ — ดูแถบสถานะใต้เมนู ถ้าเผยแพร่แล้วจริง ให้กด <strong>Ctrl+F5</strong> เพื่อบังคับโหลดใหม่</td>
+          </tr>
+          <tr>
+            <td>เข้าระบบไม่ได้ ขึ้นว่าถูกล็อก</td>
+            <td>ใส่รหัสผิดเกิน 5 ครั้ง รอ 15 นาทีแล้วลองใหม่</td>
+          </tr>
+          <tr>
+            <td>ลืมรหัสผ่าน</td>
+            <td>ให้ผู้ดูแลระบบอีกคนตั้งรหัสใหม่ให้ที่เมนูผู้ใช้งาน</td>
+          </tr>
+          <tr>
+            <td>อยู่ดี ๆ ก็เด้งออกมาหน้าล็อกอิน</td>
+            <td>ไม่ได้ทำอะไรเกิน 30 นาที หรือเปิดค้างครบ 8 ชั่วโมง เป็นการทำงานตามปกติของระบบ</td>
+          </tr>
+          <tr>
+            <td>อัปรูปแล้วขึ้นว่าไม่สำเร็จ</td>
+            <td>ตรวจว่าไฟล์ไม่เกิน 16 MB และเป็น JPG PNG หรือ WebP — ไฟล์จาก PDF หรือ HEIC จากไอโฟนบางรุ่นจะไม่ผ่าน</td>
+          </tr>
+          <tr>
+            <td>บันทึกไม่ได้ ขึ้นข้อความสีแดง</td>
+            <td>อ่านข้อความนั้น ส่วนใหญ่คือมีช่องที่ต้องกรอกแต่ยังว่าง ข้อความจะบอกว่าช่องไหน — ข้อความที่พิมพ์ไว้ยังอยู่ครบ ไม่หาย</td>
+          </tr>
+          <tr>
+            <td>ปิดแท็บแล้วเบราว์เซอร์เตือน</td>
+            <td>ยังมีของที่แก้ไว้แต่ไม่ได้บันทึก กดยกเลิกแล้วกดบันทึกฉบับร่างก่อน</td>
+          </tr>
+          <tr>
+            <td>เห็นแถบแดงเตือนเรื่องไฟล์บนเว็บ</td>
+            <td>แจ้งผู้ดูแลระบบทันที มีไฟล์ที่ไม่ควรค้างอยู่บนเซิร์ฟเวอร์</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note stop">
+      <span class="t">เจอสิ่งที่คู่มือนี้ไม่ได้เขียนไว้</span>
+      <p>
+        อย่าเดาแล้วกด โดยเฉพาะปุ่มที่มีคำว่า <strong>ลบ</strong> หรือ <strong>ย้อนกลับ</strong>
+        ถ่ายภาพหน้าจอเก็บไว้แล้วถามก่อนที่ <a href="mailto:dev@mcs.co.th"><strong>dev@mcs.co.th</strong></a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>คู่มือนี้เขียนสำหรับทีมงาน FMK Intertrade ที่ดูแลเนื้อหาเว็บไซต์ · ฉบับวันที่ 17 กันยายน 2569</p>
+    <div class="note">
+      <span class="t">ติดต่อผู้ดูแลระบบ</span>
+      <p>
+        เรื่องที่คู่มือนี้ไม่ครอบคลุม เช่น การติดตั้ง การสำรองข้อมูล การแก้ไขโครงสร้างเว็บ
+        หรือกรณีผู้ดูแลระบบเข้าหลังบ้านไม่ได้ทุกคน ให้ติดต่อที่
+      </p>
+      <p><a href="mailto:dev@mcs.co.th"><strong>dev@mcs.co.th</strong></a></p>
+      <p>
+        เวลาแจ้งปัญหา ให้ <strong>ถ่ายภาพหน้าจอ</strong> มาด้วยเสมอ พร้อมบอกว่ากำลังทำอะไรอยู่ตอนที่เจอ
+        จะแก้ได้เร็วกว่าการอธิบายด้วยคำพูดอย่างเดียวมาก
+      </p>
+    </div>
+  </footer>
+
+</div>

@@ -1,0 +1,880 @@
+{
+  "_comment": "เนื้อหาเว็บเดิมก่อนมีระบบหลังบ้าน — ห้ามแก้ด้วยมือ สร้างใหม่ด้วย node bin/extract-baseline.js",
+  "_source": "index.original.html",
+  "company": {
+    "address": "142/36 Suksawitthaya Soi, Silom, Bangrak, Bangkok 10500",
+    "phones": "+66 2 268 1681-2 · +66 98 498 9939",
+    "phoneHref": "+6622681681",
+    "email": "support@fmkintertrade.com",
+    "social": [
+      {
+        "key": "facebook",
+        "label": "Facebook",
+        "href": "https://www.facebook.com/fmkinter/"
+      },
+      {
+        "key": "youtube",
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@fmkintertrade"
+      },
+      {
+        "key": "line",
+        "label": "LINE Official",
+        "href": "https://lin.ee/TO6iB48"
+      },
+      {
+        "key": "whatsapp",
+        "label": "WhatsApp",
+        "href": "https://wa.me/message/QB6V7P56ZZEKL1"
+      }
+    ]
+  },
+  "i18n": {
+    "en": {
+      "skip": "Skip to main content",
+      "brandDescriptor": "Integrated Agriculture & Livestock Solutions",
+      "topbar": {
+        "locations": "Thailand · Laos P.D.R. · Myanmar",
+        "tagline": "Integrated Agriculture & Livestock Solutions"
+      },
+      "nav": [
+        {
+          "label": "Home",
+          "href": "#top"
+        },
+        {
+          "label": "About FMK",
+          "href": "#about"
+        },
+        {
+          "label": "Solutions",
+          "href": "#solutions"
+        },
+        {
+          "label": "Products",
+          "href": "#solutions"
+        },
+        {
+          "label": "Projects",
+          "href": "#projects"
+        },
+        {
+          "label": "Knowledge",
+          "href": "#knowledge"
+        },
+        {
+          "label": "Our Network",
+          "href": "#network"
+        },
+        {
+          "label": "Contact",
+          "href": "#contact"
+        }
+      ],
+      "cta": {
+        "consult": "Request Consultation",
+        "learnMore": "Learn more",
+        "contactTeam": "Contact Our Team"
+      },
+      "hero": {
+        "eyebrow": "TRUSTED INFRASTRUCTURE PARTNER",
+        "headline": "Building Sustainable Growth for Agriculture and Livestock",
+        "sub": "FMK delivers integrated products, engineering systems, cold-chain logistics and international trade solutions designed for long-term business performance across Southeast Asia.",
+        "ctaPrimary": "Explore Our Solutions",
+        "ctaSecondary": "Discuss Your Project",
+        "valueTitle": "AN INTEGRATED CAPABILITY",
+        "values": [
+          {
+            "k": "boxes",
+            "label": "Products",
+            "desc": "Fertilizer, feed, veterinary medicine and packaging"
+          },
+          {
+            "k": "gear",
+            "label": "Engineering",
+            "desc": "Livestock housing and greenhouse systems"
+          },
+          {
+            "k": "snowflake",
+            "label": "Cold Chain",
+            "desc": "Cold storage and packing services"
+          },
+          {
+            "k": "globe",
+            "label": "Regional Trade",
+            "desc": "Import, export and cross-border logistics"
+          }
+        ]
+      },
+      "trust": [
+        {
+          "k": "layers",
+          "title": "Integrated Solutions",
+          "desc": "Products, engineering and logistics under one partner"
+        },
+        {
+          "k": "globe",
+          "title": "Regional Network",
+          "desc": "Operating across Thailand, Laos and Myanmar"
+        },
+        {
+          "k": "boxes",
+          "title": "B2B Capability",
+          "desc": "Big-lot supply and full project delivery"
+        },
+        {
+          "k": "handshake",
+          "title": "Long-term Partnership",
+          "desc": "Reliable support throughout the value chain"
+        }
+      ],
+      "about": {
+        "eyebrow": "ABOUT FMK",
+        "title": "More Than a Trading Company",
+        "lead": "A partner across the entire agricultural and livestock value chain.",
+        "body": "FMK Intertrade bridges production and multi-category distribution — connecting products, engineering systems, warehousing and cold storage, transportation and cross-border trade to strengthen the value chain for farmers and farm operators.",
+        "badge": "OUR COMMITMENT",
+        "badgeDesc": "Globally trusted, sustainable growth and ecological responsibility.",
+        "principles": [
+          {
+            "k": "shield",
+            "title": "Reliability",
+            "desc": "Dependable supply and consistent standards our partners can plan around."
+          },
+          {
+            "k": "gear",
+            "title": "Technical Capability",
+            "desc": "Engineering-led systems for livestock housing and controlled cultivation."
+          },
+          {
+            "k": "globe",
+            "title": "Regional Reach",
+            "desc": "A footprint that connects local operations to regional markets."
+          },
+          {
+            "k": "trending",
+            "title": "Sustainable Growth",
+            "desc": "Solutions built for long-term operational and environmental performance."
+          }
+        ]
+      },
+      "solutions": {
+        "eyebrow": "INTEGRATED SOLUTIONS",
+        "title": "One Ecosystem of Solutions for Modern Agriculture",
+        "sub": "From inputs and animal health to engineering, cold chain and cross-border trade — a single, structured partner across the value chain.",
+        "items": [
+          {
+            "k": "sprout",
+            "num": "01",
+            "title": "Agricultural Inputs",
+            "desc": "Fertilizer, soil and water conditioners and crop inputs sourced for consistent field performance.",
+            "tags": [
+              "Fertilizer",
+              "Soil Conditioner",
+              "Crop Inputs"
+            ]
+          },
+          {
+            "k": "medical",
+            "num": "02",
+            "title": "Feed & Animal Health",
+            "desc": "Animal feed, premix, feed additives, veterinary medicine and vaccines for productive, healthy herds and flocks.",
+            "tags": [
+              "Animal Feed",
+              "Premix",
+              "Veterinary",
+              "Vaccine"
+            ]
+          },
+          {
+            "k": "barn",
+            "num": "03",
+            "title": "Livestock Housing Systems",
+            "desc": "Poultry and swine housing with evaporative cooling, ventilation and environmental control.",
+            "tags": [
+              "Evaporative",
+              "Ventilation",
+              "Farm Equipment"
+            ]
+          },
+          {
+            "k": "greenhouse",
+            "num": "04",
+            "title": "Greenhouse Solutions",
+            "desc": "Greenhouse structures and protected cultivation with irrigation and environmental systems.",
+            "tags": [
+              "Structures",
+              "Irrigation",
+              "Climate Control"
+            ]
+          },
+          {
+            "k": "snowflake",
+            "num": "05",
+            "title": "Cold Storage & Packing",
+            "desc": "Temperature-controlled storage, product packing, handling and distribution preparation.",
+            "tags": [
+              "Cold Storage",
+              "Packing",
+              "Handling"
+            ]
+          },
+          {
+            "k": "truck",
+            "num": "06",
+            "title": "Logistics & Cross-border Trade",
+            "desc": "Transportation, shipping, import and export with regional distribution across the mainland.",
+            "tags": [
+              "Transport",
+              "Import / Export",
+              "Shipping Agent"
+            ]
+          }
+        ]
+      },
+      "projects": {
+        "eyebrow": "CAPABILITY & PROJECTS",
+        "title": "Infrastructure Built Around Real Operations",
+        "sub": "Representative capability areas across housing, cold chain and logistics. Verified project references will be published as FMK confirms details.",
+        "viewAll": "View All Projects",
+        "pending": "Project information pending verification",
+        "items": [
+          {
+            "type": "LIVESTOCK HOUSING",
+            "name": "Evaporative Livestock Housing",
+            "location": "Thailand",
+            "scope": "Design & build"
+          },
+          {
+            "type": "COLD CHAIN",
+            "name": "Cold Storage & Packing",
+            "location": "Thailand"
+          },
+          {
+            "type": "GREENHOUSE",
+            "name": "Protected Cultivation",
+            "location": "Thailand"
+          }
+        ]
+      },
+      "why": {
+        "eyebrow": "WHY FMK",
+        "title": "Standards That Build Lasting Confidence",
+        "items": [
+          {
+            "k": "handshake",
+            "num": "01",
+            "title": "Responsible Partnership",
+            "desc": "We work as a long-term partner, accountable across every stage of delivery."
+          },
+          {
+            "k": "check",
+            "num": "02",
+            "title": "Operational Reliability",
+            "desc": "Consistent supply and execution that operations can depend on."
+          },
+          {
+            "k": "gear",
+            "num": "03",
+            "title": "Technical Expertise",
+            "desc": "Engineering knowledge applied to real farm and facility challenges."
+          },
+          {
+            "k": "trending",
+            "num": "04",
+            "title": "Sustainable Progress",
+            "desc": "Solutions designed for durable, responsible growth."
+          }
+        ]
+      },
+      "network": {
+        "eyebrow": "OUR NETWORK",
+        "title": "Connected Locally. Positioned Regionally.",
+        "sub": "A network of offices in Thailand with an established presence in neighbouring markets, positioning FMK to serve operations across the region.",
+        "thailand": "THAILAND",
+        "overseas": "OVERSEAS",
+        "statOffices": "Offices in Thailand",
+        "statCountries": "Countries served",
+        "th": [
+          {
+            "city": "Bangkok",
+            "role": "HEAD OFFICE",
+            "detail": "142/36 Suksawitthaya Soi, Silom, Bangrak, Bangkok 10500"
+          },
+          {
+            "city": "Chiang Mai",
+            "role": "BRANCH",
+            "detail": "Northern regional operations"
+          },
+          {
+            "city": "Nakhon Phanom",
+            "role": "BRANCH",
+            "detail": "Northeastern / border operations"
+          },
+          {
+            "city": "Nakhon Ratchasima",
+            "role": "BRANCH",
+            "detail": "Northeastern regional operations"
+          }
+        ],
+        "overseasOffices": [
+          {
+            "city": "Laos P.D.R.",
+            "detail": "FMK Laos Intertrade — import & export operations"
+          },
+          {
+            "city": "Myanmar",
+            "detail": "Representative office"
+          }
+        ]
+      },
+      "knowledge": {
+        "eyebrow": "KNOWLEDGE & INSIGHTS",
+        "title": "Industry Knowledge and Practical Insights",
+        "viewAll": "All Articles",
+        "readMore": "Read more",
+        "items": [
+          {
+            "category": "Livestock Management",
+            "date": "Draft — pending publication",
+            "title": "Environmental control in modern livestock housing",
+            "excerpt": "Placeholder summary. Replace with a verified FMK article on ventilation and evaporative cooling."
+          },
+          {
+            "category": "Cold Chain",
+            "date": "Draft — pending publication",
+            "title": "Maintaining product integrity through the cold chain",
+            "excerpt": "Placeholder summary. Replace with a verified FMK article on cold storage and handling."
+          },
+          {
+            "category": "Cross-border Trade",
+            "date": "Draft — pending publication",
+            "title": "Moving agricultural goods across regional borders",
+            "excerpt": "Placeholder summary. Replace with a verified FMK article on logistics and trade."
+          }
+        ]
+      },
+      "finalCta": {
+        "eyebrow": "START A CONVERSATION",
+        "title": "Let’s Build Your Next Operation Together",
+        "sub": "Talk to FMK about big-lot supply, livestock systems, agricultural projects, cold storage or regional logistics."
+      },
+      "contact": {
+        "title": "DIRECT CONTACT",
+        "phoneLabel": "Phone",
+        "emailLabel": "Email",
+        "addressLabel": "Head Office"
+      },
+      "footer": {
+        "tagline": "FMK Intertrade bridges production and multi-category distribution to strengthen the value chain for farmers and farm operators.",
+        "colCompany": "COMPANY",
+        "colSolutions": "SOLUTIONS",
+        "colContact": "CONTACT",
+        "headOffice": "HEAD OFFICE",
+        "hours": "Mon–Fri, 08:30–17:30 (ICT)",
+        "copyright": "© 2026 FMK Intertrade Company Limited. All rights reserved.",
+        "company": [
+          "About FMK",
+          "Vision & Mission",
+          "Management",
+          "Careers",
+          "Contact"
+        ],
+        "solutions": [
+          "Agricultural Inputs",
+          "Feed & Animal Health",
+          "Livestock Engineering",
+          "Greenhouse",
+          "Cold Chain",
+          "Logistics"
+        ],
+        "legal": [
+          "Privacy Policy",
+          "Terms of Use",
+          "Cookie Policy",
+          "Sitemap"
+        ]
+      },
+      "form": {
+        "eyebrow": "REQUEST CONSULTATION",
+        "title": "Discuss Your Project with FMK",
+        "sub": "Share a few details and our team will follow up on supply, systems or logistics.",
+        "demoBadge": "Demo form — backend integration required",
+        "fullName": "Full Name",
+        "company": "Company Name",
+        "position": "Job Position",
+        "country": "Country",
+        "email": "Email",
+        "phone": "Phone",
+        "solution": "Interested Solution",
+        "projectType": "Estimated Project Type",
+        "message": "Message",
+        "contactMethod": "Preferred Contact Method",
+        "consent": "I agree to FMK Intertrade processing my information to respond to this enquiry, in line with the Privacy Policy.",
+        "submit": "Submit Request",
+        "submitting": "Submitting…",
+        "demoTitle": "Details captured (demo)",
+        "demoBody": "This is a prototype form. No data was sent — connect a backend endpoint to receive submissions.",
+        "close": "Close",
+        "errRequired": "This field is required",
+        "errEmail": "Enter a valid email address",
+        "errPhone": "Enter a valid phone number",
+        "errConsent": "Please accept the privacy policy",
+        "countryOpts": [
+          "Select country",
+          "Thailand",
+          "Laos P.D.R.",
+          "Myanmar",
+          "Cambodia",
+          "Vietnam",
+          "Other"
+        ],
+        "solutionOpts": [
+          "Select a solution",
+          "Agricultural Inputs",
+          "Feed & Animal Health",
+          "Livestock Housing",
+          "Greenhouse",
+          "Cold Storage & Packing",
+          "Logistics & Trade"
+        ],
+        "projectTypeOpts": [
+          "Select type",
+          "Big-lot supply",
+          "Construction project",
+          "Ongoing supply",
+          "Consultation / assessment"
+        ],
+        "contactMethodOpts": [
+          "Phone",
+          "Email",
+          "LINE",
+          "WhatsApp"
+        ]
+      }
+    },
+    "th": {
+      "skip": "ข้ามไปยังเนื้อหาหลัก",
+      "brandDescriptor": "โซลูชันเกษตรและปศุสัตว์แบบครบวงจร",
+      "topbar": {
+        "locations": "ไทย · สปป.ลาว · เมียนมา",
+        "tagline": "โซลูชันเกษตรและปศุสัตว์แบบครบวงจร"
+      },
+      "nav": [
+        {
+          "label": "หน้าแรก",
+          "href": "#top"
+        },
+        {
+          "label": "เกี่ยวกับ FMK",
+          "href": "#about"
+        },
+        {
+          "label": "โซลูชัน",
+          "href": "#solutions"
+        },
+        {
+          "label": "สินค้า",
+          "href": "#solutions"
+        },
+        {
+          "label": "ผลงาน",
+          "href": "#projects"
+        },
+        {
+          "label": "องค์ความรู้",
+          "href": "#knowledge"
+        },
+        {
+          "label": "เครือข่าย",
+          "href": "#network"
+        },
+        {
+          "label": "ติดต่อ",
+          "href": "#contact"
+        }
+      ],
+      "cta": {
+        "consult": "ขอรับคำปรึกษา",
+        "learnMore": "ดูเพิ่มเติม",
+        "contactTeam": "ติดต่อทีมงาน"
+      },
+      "hero": {
+        "eyebrow": "พันธมิตรด้านโครงสร้างพื้นฐานที่ไว้วางใจได้",
+        "headline": "สร้างการเติบโตที่ยั่งยืนให้แก่อุตสาหกรรมเกษตรและปศุสัตว์",
+        "sub": "FMK ส่งมอบสินค้า ระบบวิศวกรรม โซลูชันห่วงโซ่ความเย็น และบริการการค้าระหว่างประเทศแบบครบวงจร เพื่อเสริมสร้างศักยภาพทางธุรกิจระยะยาวให้แก่ลูกค้าทั่วเอเชียตะวันออกเฉียงใต้",
+        "ctaPrimary": "สำรวจโซลูชันของเรา",
+        "ctaSecondary": "ปรึกษาโครงการของคุณ",
+        "valueTitle": "ศักยภาพแบบครบวงจร",
+        "values": [
+          {
+            "k": "boxes",
+            "label": "สินค้า",
+            "desc": "ปุ๋ย อาหารสัตว์ เวชภัณฑ์ และบรรจุภัณฑ์"
+          },
+          {
+            "k": "gear",
+            "label": "วิศวกรรม",
+            "desc": "ระบบโรงเรือนปศุสัตว์และโรงเรือนปลูกพืช"
+          },
+          {
+            "k": "snowflake",
+            "label": "ห่วงโซ่ความเย็น",
+            "desc": "ห้องเย็นและบริการแพ็กสินค้า"
+          },
+          {
+            "k": "globe",
+            "label": "การค้าภูมิภาค",
+            "desc": "นำเข้า ส่งออก และขนส่งข้ามพรมแดน"
+          }
+        ]
+      },
+      "trust": [
+        {
+          "k": "layers",
+          "title": "โซลูชันครบวงจร",
+          "desc": "สินค้า วิศวกรรม และโลจิสติกส์จากพันธมิตรเดียว"
+        },
+        {
+          "k": "globe",
+          "title": "เครือข่ายภูมิภาค",
+          "desc": "ดำเนินงานทั่วไทย สปป.ลาว และเมียนมา"
+        },
+        {
+          "k": "boxes",
+          "title": "ศักยภาพระดับ B2B",
+          "desc": "จัดส่งปริมาณมากและงานโครงการเต็มรูปแบบ"
+        },
+        {
+          "k": "handshake",
+          "title": "พันธมิตรระยะยาว",
+          "desc": "สนับสนุนอย่างเชื่อถือได้ตลอดห่วงโซ่คุณค่า"
+        }
+      ],
+      "about": {
+        "eyebrow": "เกี่ยวกับ FMK",
+        "title": "มากกว่าบริษัทเทรดดิ้ง",
+        "lead": "พันธมิตรตลอดห่วงโซ่คุณค่าของอุตสาหกรรมเกษตรและปศุสัตว์",
+        "body": "FMK Intertrade เป็นตัวกลางเชื่อมโยงระหว่างการผลิตและการจัดจำหน่ายสินค้าหลากหลายหมวดหมู่ — เชื่อมโยงสินค้า ระบบวิศวกรรม คลังสินค้าและห้องเย็น การขนส่ง และการค้าข้ามพรมแดน เพื่อเสริมสร้างห่วงโซ่คุณค่าให้แก่เกษตรกรและผู้ประกอบการฟาร์ม",
+        "badge": "ความมุ่งมั่นของเรา",
+        "badgeDesc": "ความน่าเชื่อถือระดับสากล การเติบโตที่ยั่งยืน และความรับผิดชอบต่อสิ่งแวดล้อม",
+        "principles": [
+          {
+            "k": "shield",
+            "title": "ความน่าเชื่อถือ",
+            "desc": "การจัดหาที่ไว้วางใจได้และมาตรฐานที่สม่ำเสมอสำหรับการวางแผนของคู่ค้า"
+          },
+          {
+            "k": "gear",
+            "title": "ความสามารถทางเทคนิค",
+            "desc": "ระบบที่นำโดยวิศวกรรมสำหรับโรงเรือนปศุสัตว์และการเพาะปลูกแบบควบคุม"
+          },
+          {
+            "k": "globe",
+            "title": "เครือข่ายภูมิภาค",
+            "desc": "เครือข่ายที่เชื่อมโยงการดำเนินงานในพื้นที่กับตลาดในภูมิภาค"
+          },
+          {
+            "k": "trending",
+            "title": "การเติบโตที่ยั่งยืน",
+            "desc": "โซลูชันที่ออกแบบเพื่อประสิทธิภาพระยะยาวทั้งด้านการดำเนินงานและสิ่งแวดล้อม"
+          }
+        ]
+      },
+      "solutions": {
+        "eyebrow": "โซลูชันครบวงจร",
+        "title": "ระบบนิเวศโซลูชันเดียวสำหรับเกษตรกรรมยุคใหม่",
+        "sub": "ตั้งแต่ปัจจัยการผลิตและสุขภาพสัตว์ ไปจนถึงงานวิศวกรรม ห่วงโซ่ความเย็น และการค้าข้ามพรมแดน — พันธมิตรเดียวที่เป็นระบบตลอดห่วงโซ่คุณค่า",
+        "items": [
+          {
+            "k": "sprout",
+            "num": "01",
+            "title": "ปัจจัยการผลิตทางการเกษตร",
+            "desc": "ปุ๋ย สารปรับสภาพดินและน้ำ และปัจจัยการผลิตพืช คัดสรรเพื่อประสิทธิภาพที่สม่ำเสมอ",
+            "tags": [
+              "ปุ๋ยเคมี",
+              "สารปรับสภาพดิน",
+              "ปัจจัยการผลิต"
+            ]
+          },
+          {
+            "k": "medical",
+            "num": "02",
+            "title": "อาหารสัตว์และสุขภาพสัตว์",
+            "desc": "อาหารสัตว์ พรีมิกซ์ สารเสริม เวชภัณฑ์ และวัคซีน เพื่อฝูงสัตว์ที่แข็งแรงและให้ผลผลิตดี",
+            "tags": [
+              "อาหารสัตว์",
+              "พรีมิกซ์",
+              "เวชภัณฑ์",
+              "วัคซีน"
+            ]
+          },
+          {
+            "k": "barn",
+            "num": "03",
+            "title": "ระบบโรงเรือนปศุสัตว์",
+            "desc": "โรงเรือนสัตว์ปีกและสุกรพร้อมระบบอีแวป ระบายอากาศ และควบคุมสภาพแวดล้อม",
+            "tags": [
+              "ระบบอีแวป",
+              "ระบายอากาศ",
+              "อุปกรณ์ฟาร์ม"
+            ]
+          },
+          {
+            "k": "greenhouse",
+            "num": "04",
+            "title": "โซลูชันโรงเรือนปลูกพืช",
+            "desc": "โครงสร้างโรงเรือนและการเพาะปลูกแบบป้องกันพร้อมระบบน้ำและควบคุมสภาพแวดล้อม",
+            "tags": [
+              "โครงสร้าง",
+              "ระบบน้ำ",
+              "ควบคุมสภาพอากาศ"
+            ]
+          },
+          {
+            "k": "snowflake",
+            "num": "05",
+            "title": "ห้องเย็นและบรรจุ",
+            "desc": "จัดเก็บแบบควบคุมอุณหภูมิ แพ็กสินค้า การจัดการ และเตรียมการกระจายสินค้า",
+            "tags": [
+              "ห้องเย็น",
+              "แพ็กสินค้า",
+              "การจัดการ"
+            ]
+          },
+          {
+            "k": "truck",
+            "num": "06",
+            "title": "โลจิสติกส์และการค้าข้ามพรมแดน",
+            "desc": "ขนส่ง ชิปปิ้ง นำเข้าและส่งออก พร้อมการกระจายสินค้าในภูมิภาค",
+            "tags": [
+              "ขนส่ง",
+              "นำเข้า/ส่งออก",
+              "ตัวแทนชิปปิ้ง"
+            ]
+          }
+        ]
+      },
+      "projects": {
+        "eyebrow": "ศักยภาพและผลงาน",
+        "title": "โครงสร้างพื้นฐานที่สร้างจากการดำเนินงานจริง",
+        "sub": "ตัวอย่างขอบเขตศักยภาพด้านโรงเรือน ห่วงโซ่ความเย็น และโลจิสติกส์ ผลงานที่ตรวจสอบแล้วจะเผยแพร่เมื่อ FMK ยืนยันรายละเอียด",
+        "viewAll": "ดูผลงานทั้งหมด",
+        "pending": "ข้อมูลโครงการอยู่ระหว่างการตรวจสอบ",
+        "items": [
+          {
+            "type": "โรงเรือนปศุสัตว์",
+            "name": "โรงเรือนปศุสัตว์ระบบอีแวป",
+            "location": "ประเทศไทย",
+            "scope": "ออกแบบและก่อสร้าง"
+          },
+          {
+            "type": "ห่วงโซ่ความเย็น",
+            "name": "ห้องเย็นและบริการแพ็ก",
+            "location": "ประเทศไทย"
+          },
+          {
+            "type": "โรงเรือนปลูกพืช",
+            "name": "การเพาะปลูกแบบป้องกัน",
+            "location": "ประเทศไทย"
+          }
+        ]
+      },
+      "why": {
+        "eyebrow": "ทำไมต้อง FMK",
+        "title": "มาตรฐานที่สร้างความมั่นใจอย่างยั่งยืน",
+        "items": [
+          {
+            "k": "handshake",
+            "num": "01",
+            "title": "พันธมิตรที่รับผิดชอบ",
+            "desc": "เราทำงานในฐานะพันธมิตรระยะยาว รับผิดชอบในทุกขั้นตอนการส่งมอบ"
+          },
+          {
+            "k": "check",
+            "num": "02",
+            "title": "ความน่าเชื่อถือในการดำเนินงาน",
+            "desc": "การจัดหาและการดำเนินงานที่สม่ำเสมอซึ่งไว้วางใจได้"
+          },
+          {
+            "k": "gear",
+            "num": "03",
+            "title": "ความเชี่ยวชาญทางเทคนิค",
+            "desc": "องค์ความรู้ด้านวิศวกรรมที่นำไปใช้กับความท้าทายจริงของฟาร์มและโรงงาน"
+          },
+          {
+            "k": "trending",
+            "num": "04",
+            "title": "ความก้าวหน้าที่ยั่งยืน",
+            "desc": "โซลูชันที่ออกแบบเพื่อการเติบโตที่มั่นคงและรับผิดชอบ"
+          }
+        ]
+      },
+      "network": {
+        "eyebrow": "เครือข่ายของเรา",
+        "title": "เชื่อมโยงในพื้นที่ วางตำแหน่งระดับภูมิภาค",
+        "sub": "เครือข่ายสำนักงานในประเทศไทย พร้อมการมีอยู่ในตลาดประเทศเพื่อนบ้าน วางตำแหน่งให้ FMK รองรับการดำเนินงานทั่วภูมิภาค",
+        "thailand": "ประเทศไทย",
+        "overseas": "ต่างประเทศ",
+        "statOffices": "สำนักงานในไทย",
+        "statCountries": "ประเทศที่ให้บริการ",
+        "th": [
+          {
+            "city": "กรุงเทพฯ",
+            "role": "สำนักงานใหญ่",
+            "detail": "142/36 ซอยสุขสวิทยา สีลม บางรัก กรุงเทพฯ 10500"
+          },
+          {
+            "city": "เชียงใหม่",
+            "role": "สาขา",
+            "detail": "การดำเนินงานภาคเหนือ"
+          },
+          {
+            "city": "นครพนม",
+            "role": "สาขา",
+            "detail": "การดำเนินงานภาคอีสาน/ชายแดน"
+          },
+          {
+            "city": "นครราชสีมา",
+            "role": "สาขา",
+            "detail": "การดำเนินงานภาคอีสาน"
+          }
+        ],
+        "overseasOffices": [
+          {
+            "city": "สปป.ลาว",
+            "detail": "FMK Laos Intertrade — นำเข้าและส่งออก"
+          },
+          {
+            "city": "เมียนมา",
+            "detail": "สำนักงานตัวแทน"
+          }
+        ]
+      },
+      "knowledge": {
+        "eyebrow": "องค์ความรู้และข้อมูลเชิงลึก",
+        "title": "ความรู้อุตสาหกรรมและข้อมูลเชิงปฏิบัติ",
+        "viewAll": "บทความทั้งหมด",
+        "readMore": "อ่านต่อ",
+        "items": [
+          {
+            "category": "การจัดการปศุสัตว์",
+            "date": "ฉบับร่าง — รอเผยแพร่",
+            "title": "การควบคุมสภาพแวดล้อมในโรงเรือนปศุสัตว์ยุคใหม่",
+            "excerpt": "ข้อความตัวอย่าง แทนที่ด้วยบทความจริงของ FMK เรื่องการระบายอากาศและระบบอีแวป"
+          },
+          {
+            "category": "ห่วงโซ่ความเย็น",
+            "date": "ฉบับร่าง — รอเผยแพร่",
+            "title": "การรักษาคุณภาพสินค้าตลอดห่วงโซ่ความเย็น",
+            "excerpt": "ข้อความตัวอย่าง แทนที่ด้วยบทความจริงของ FMK เรื่องห้องเย็นและการจัดการ"
+          },
+          {
+            "category": "การค้าข้ามพรมแดน",
+            "date": "ฉบับร่าง — รอเผยแพร่",
+            "title": "การเคลื่อนย้ายสินค้าเกษตรข้ามพรมแดนในภูมิภาค",
+            "excerpt": "ข้อความตัวอย่าง แทนที่ด้วยบทความจริงของ FMK เรื่องโลจิสติกส์และการค้า"
+          }
+        ]
+      },
+      "finalCta": {
+        "eyebrow": "เริ่มต้นพูดคุย",
+        "title": "มาร่วมสร้างการดำเนินงานครั้งต่อไปของคุณ",
+        "sub": "ปรึกษา FMK เรื่องการจัดส่งปริมาณมาก ระบบปศุสัตว์ โครงการเกษตร ห้องเย็น หรือโลจิสติกส์ในภูมิภาค"
+      },
+      "contact": {
+        "title": "ติดต่อโดยตรง",
+        "phoneLabel": "โทรศัพท์",
+        "emailLabel": "อีเมล",
+        "addressLabel": "สำนักงานใหญ่"
+      },
+      "footer": {
+        "tagline": "FMK Intertrade เป็นตัวกลางเชื่อมโยงระหว่างการผลิตและการจัดจำหน่ายหลากหลายหมวดหมู่ เพื่อเสริมสร้างห่วงโซ่คุณค่าให้แก่เกษตรกรและผู้ประกอบการฟาร์ม",
+        "colCompany": "บริษัท",
+        "colSolutions": "โซลูชัน",
+        "colContact": "ติดต่อ",
+        "headOffice": "สำนักงานใหญ่",
+        "hours": "จันทร์–ศุกร์ 08:30–17:30 น.",
+        "copyright": "© 2026 บริษัท เอฟเอ็มเค อินเตอร์เทรด จำกัด สงวนลิขสิทธิ์",
+        "company": [
+          "เกี่ยวกับ FMK",
+          "วิสัยทัศน์และพันธกิจ",
+          "ผู้บริหาร",
+          "ร่วมงานกับเรา",
+          "ติดต่อ"
+        ],
+        "solutions": [
+          "ปัจจัยการผลิตเกษตร",
+          "อาหารสัตว์และสุขภาพสัตว์",
+          "วิศวกรรมปศุสัตว์",
+          "โรงเรือนปลูกพืช",
+          "ห่วงโซ่ความเย็น",
+          "โลจิสติกส์"
+        ],
+        "legal": [
+          "นโยบายความเป็นส่วนตัว",
+          "เงื่อนไขการใช้งาน",
+          "นโยบายคุกกี้",
+          "แผนผังเว็บไซต์"
+        ]
+      },
+      "form": {
+        "eyebrow": "ขอรับคำปรึกษา",
+        "title": "ปรึกษาโครงการของคุณกับ FMK",
+        "sub": "กรอกรายละเอียดเบื้องต้น แล้วทีมงานของเราจะติดต่อกลับเรื่องสินค้า ระบบ หรือโลจิสติกส์",
+        "demoBadge": "แบบฟอร์มตัวอย่าง — ต้องเชื่อมต่อระบบหลังบ้าน",
+        "fullName": "ชื่อ-นามสกุล",
+        "company": "ชื่อบริษัท",
+        "position": "ตำแหน่งงาน",
+        "country": "ประเทศ",
+        "email": "อีเมล",
+        "phone": "เบอร์โทรศัพท์",
+        "solution": "โซลูชันที่สนใจ",
+        "projectType": "ประเภทโครงการโดยประมาณ",
+        "message": "ข้อความ",
+        "contactMethod": "ช่องทางติดต่อที่สะดวก",
+        "consent": "ข้าพเจ้ายินยอมให้ FMK Intertrade ประมวลผลข้อมูลเพื่อตอบกลับคำถามนี้ ตามนโยบายความเป็นส่วนตัว",
+        "submit": "ส่งคำขอ",
+        "submitting": "กำลังส่ง…",
+        "demoTitle": "บันทึกข้อมูลแล้ว (ตัวอย่าง)",
+        "demoBody": "นี่คือแบบฟอร์มต้นแบบ ยังไม่มีการส่งข้อมูลจริง โปรดเชื่อมต่อ backend เพื่อรับข้อมูล",
+        "close": "ปิด",
+        "errRequired": "จำเป็นต้องกรอกข้อมูลนี้",
+        "errEmail": "รูปแบบอีเมลไม่ถูกต้อง",
+        "errPhone": "รูปแบบเบอร์โทรไม่ถูกต้อง",
+        "errConsent": "กรุณายอมรับนโยบายความเป็นส่วนตัว",
+        "countryOpts": [
+          "เลือกประเทศ",
+          "ไทย",
+          "สปป.ลาว",
+          "เมียนมา",
+          "กัมพูชา",
+          "เวียดนาม",
+          "อื่น ๆ"
+        ],
+        "solutionOpts": [
+          "เลือกโซลูชัน",
+          "ปัจจัยการผลิตเกษตร",
+          "อาหารสัตว์และสุขภาพสัตว์",
+          "โรงเรือนปศุสัตว์",
+          "โรงเรือนปลูกพืช",
+          "ห้องเย็นและบรรจุ",
+          "โลจิสติกส์และการค้า"
+        ],
+        "projectTypeOpts": [
+          "เลือกประเภท",
+          "จัดหาสินค้าปริมาณมาก",
+          "โครงการก่อสร้าง",
+          "จัดหาอย่างต่อเนื่อง",
+          "ปรึกษา/ประเมิน"
+        ],
+        "contactMethodOpts": [
+          "โทรศัพท์",
+          "อีเมล",
+          "LINE",
+          "WhatsApp"
+        ]
+      }
+    }
+  }
+}

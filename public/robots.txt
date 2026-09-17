@@ -1,0 +1,6 @@
+# FMK Intertrade
+User-agent: *
+Disallow: /admin/
+Disallow: /assets/media/thumb/
+
+Sitemap: https://fmkintertrade.shop/sitemap.xml

@@ -1,10 +1,25 @@
-/node_modules
-/.next
-/out
-/build
-next-env.d.ts
-*.tsbuildinfo
-.DS_Store
-.env*.local
-uploads/*
-!uploads/.gitkeep
+# ห้ามขึ้น Git เด็ดขาด
+config/config.local.php
+
+# ชุดไฟล์ติดตั้งที่ประกอบไว้ — สร้างใหม่ได้เสมอด้วย  php bin/make-bundle.php
+#
+# ไม่ใช่แค่ไฟล์ซ้ำซ้อน แต่ข้างในมีเครื่องมือที่ไม่ควรเปิดเผย
+# recover.php สร้างบัญชีผู้ดูแลได้ · fmk-check.php เปิดเผยสภาพเซิร์ฟเวอร์
+# และมี zip ที่รวมซอร์สหลังบ้านทั้งชุดไว้ในไฟล์เดียว
+dist/
+
+# ไฟล์ที่ generate ขึ้นมา
+node_modules/
+*.log
+
+# สำเนาคู่มือสำหรับพิมพ์ — สร้างใหม่ได้จาก docs/manual/index.html
+# ไฟล์นี้ฝังฟอนต์เป็น base64 ไว้ข้างใน จึงใหญ่และ diff ไม่มีประโยชน์
+docs/manual/print.html
+
+# สำรองสถานะ CMS (มีเนื้อหาและรูปฝังอยู่)
+snapshots/
+
+# รูปที่ผู้ดูแลอัปโหลดผ่านหลังบ้าน เป็นข้อมูลของเว็บ ไม่ใช่ซอร์สโค้ด
+# แต่ .htaccess ในโฟลเดอร์นั้นเป็นของระบบ ต้องเก็บไว้
+public/assets/media/*
+!public/assets/media/.htaccess

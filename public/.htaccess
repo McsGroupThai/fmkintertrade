@@ -1,0 +1,57 @@
+# FMK Intertrade — ค่าตั้ง Apache สำหรับโฟลเดอร์สาธารณะ
+# ไฟล์นี้ยังไม่เคยทดสอบบน Apache ของโฮสต์จริง — ต้องทดสอบบนโดเมนทดสอบก่อนใช้กับเว็บจริง
+
+# ---------- เครื่องหมายพิสูจน์ว่าไฟล์นี้ถูกอ่านจริง ----------
+# fmk-check.php ใช้ค่านี้บอกว่าโฮสต์เปิด AllowOverride ให้หรือเปล่า
+# ถ้าโฮสต์ปิดไว้ คำสั่งทุกบรรทัดใต้นี้จะถูกเมินเงียบ ๆ ซึ่งอันตรายกว่าการพัง
+<IfModule mod_env.c>
+  SetEnv FMK_HTACCESS on
+</IfModule>
+
+# ---------- ปิดการไล่ดูรายชื่อไฟล์ ----------
+Options -Indexes
+
+# ---------- ห้ามเข้าถึงไฟล์ที่ไม่ควรเปิดเผย ----------
+#
+# รวมไฟล์บีบอัดไว้ด้วย เพราะเคยเกิดขึ้นจริงตอนอัปเดตเว็บ 2026-09-17
+# มีคนสำรองโฟลเดอร์ admin เป็น zip แล้ววางไว้ในโฟลเดอร์นี้
+# ซอร์สโค้ดหลังบ้านทั้งชุดจึงโหลดได้จากเว็บอยู่พักหนึ่ง
+# การสำรองไฟล์เป็นเรื่องที่ต้องทำบ่อย ความผิดพลาดแบบนี้จึงจะเกิดอีกแน่
+# กันไว้ที่นี่ทีเดียว ดีกว่าหวังว่าทุกคนจะจำได้ว่าต้องวางไว้นอกโฟลเดอร์เว็บ
+<FilesMatch "^\.|\.(json|md|sql|log|ini|bak|old|orig|save|swp|dist|example|zip|tar|gz|tgz|bz2|7z|rar)$">
+  Require all denied
+</FilesMatch>
+
+# ---------- security headers ----------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # ส่ง HSTS ก็ต่อเมื่อ HTTPS ทำงานเรียบร้อยแล้วเท่านั้น ไม่งั้นจะเข้าเว็บไม่ได้
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# ---------- บังคับ HTTPS ----------
+# เปิดใช้เมื่อยืนยันแล้วว่าใบรับรอง SSL ทำงานปกติ
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ---------- แคช ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg   "access plus 7 days"
+  ExpiresByType image/png    "access plus 7 days"
+  ExpiresByType text/css     "access plus 7 days"
+  # index.html ต้องไม่ถูกแคชนาน ไม่งั้นแก้เนื้อหาแล้วผู้ชมยังเห็นของเก่า
+  ExpiresByType text/html    "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

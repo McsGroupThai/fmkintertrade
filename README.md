@@ -1,79 +1,87 @@
-# FMK Intertrade — Corporate Homepage
+# FMK Intertrade — เว็บไซต์และระบบจัดการเนื้อหา
 
-Bilingual (English / Thai) corporate homepage for **FMK Intertrade Company Limited**, built to the "Trusted Infrastructure Partner" brief. Implemented in **Next.js (App Router) + TypeScript + Tailwind CSS**, with **React Hook Form + Zod** for the consultation form.
+เว็บไซต์ [fmkintertrade.shop](https://fmkintertrade.shop) พร้อมระบบหลังบ้านที่ให้ทีมงาน
+แก้เนื้อหาเองได้ทั้งภาษาไทยและอังกฤษ โดยไม่ต้องแตะโค้ด
 
-> This is the production implementation of the design exported from Claude Design. The original design prototype and the full brief live in [`project/`](./project) and [`chats/`](./chats); the handoff notes are in [`docs/FMK_HOMEPAGE_IMPLEMENTATION.md`](./docs/FMK_HOMEPAGE_IMPLEMENTATION.md).
+> **หมายเหตุเรื่องประวัติ** — ก่อนหน้า commit ที่เปลี่ยนมาเป็นระบบนี้
+> repo นี้เก็บเว็บรุ่นก่อนซึ่งเขียนด้วย Next.js ประวัติเดิมยังอยู่ครบ
+> ดูได้จาก tag `pre-cms-2026-07-26`
 
-## Quick start
+## แนวคิดหลัก
+
+**หน้าเว็บสาธารณะเป็นไฟล์ static ล้วน ๆ** ไม่เรียกฐานข้อมูลตอนมีคนเข้าชม
+
+เมื่อผู้ดูแลกด "เผยแพร่" ระบบจะประกอบ `template.html` เข้ากับเนื้อหาในฐานข้อมูล
+แล้วเขียนออกมาเป็น `index.html` กับ `privacy.html` ครั้งเดียว
+ถ้า PHP หรือ MySQL ล่มหลังจากนั้น หน้าเว็บก็ยังแสดงได้ครบ เสียแค่ส่งแบบฟอร์มติดต่อไม่ได้
+
+```
+template.html ─┐
+               ├─→ Builder ─→ public/index.html      (หน้าแรก)
+เนื้อหา (DB) ──┤
+               └─→ Builder ─→ public/privacy.html    (นโยบายความเป็นส่วนตัว)
+```
+
+## ตัวสร้างหน้าเว็บมีสองตัว และต้องให้ผลตรงกันทุกไบต์
+
+| ตัว | ใช้เมื่อไร |
+|---|---|
+| `app/Builder.php` | บนโฮสต์จริง ตอนกดเผยแพร่ |
+| `build.js` | ในเครื่องพัฒนา ตอนทดสอบ |
+
+**แก้ตัวใดตัวหนึ่งต้องแก้อีกตัวเสมอ** มีเทสต์เทียบผลไบต์ต่อไบต์อยู่
+ถ้าสองตัวนี้ให้ผลต่างกัน แปลว่าสิ่งที่ทดสอบในเครื่องไม่ใช่สิ่งที่ขึ้นเว็บจริง
+
+## โครงไฟล์
+
+| ที่อยู่ | คืออะไร |
+|---|---|
+| `app/` | คลาส PHP ของระบบหลังบ้าน — **ต้องวางไว้นอกโฟลเดอร์เว็บ** |
+| `public/` | ทุกอย่างที่เปิดให้เข้าถึงจากเว็บ (ไปเป็น `public_html` บนโฮสต์) |
+| `public/admin/` | หน้าจอผู้ดูแล |
+| `template.html` | แม่แบบหน้าแรก |
+| `template-privacy.html` | แม่แบบหน้านโยบาย |
+| `content.json` | เนื้อหาตั้งต้น ใช้ตอนติดตั้งใหม่ (ของจริงอยู่ในฐานข้อมูล) |
+| `db/` | สคริปต์สร้างตาราง เรียงตามลำดับ |
+| `bin/` | เครื่องมือบรรทัดคำสั่ง |
+| `deploy/` | เครื่องมือที่ใช้เฉพาะตอนติดตั้ง แล้วลบทิ้ง |
+| `docs/` | คู่มือผู้ใช้ (ไฟล์ PDF ส่งให้ผู้ใช้งานได้เลย) |
+
+## ความปลอดภัยที่ต้องรักษาไว้
+
+สิ่งเหล่านี้ไม่ใช่ของประดับ ถ้าแก้ต้องรู้ว่ากำลังแลกอะไร
+
+- ตรวจสิทธิ์ทุกอย่างทำฝั่งเซิร์ฟเวอร์ ไม่ใช่ซ่อนปุ่มด้วย JavaScript
+- รหัสผ่านเก็บเป็น argon2id · session เก็บเฉพาะ sha256 ของ id ในฐานข้อมูล
+- จำกัดจำนวนครั้งที่ลองรหัสผ่าน ทั้งรายอีเมลและราย IP
+- โฟลเดอร์ที่ผู้ใช้อัปไฟล์เข้ามาถูกห้ามรันสคริปต์ด้วย `.htaccess` ของตัวเอง
+- แบบฟอร์มติดต่อกันบอทด้วยช่องล่อ กับดักเวลา และการจำกัดจำนวนครั้ง โดยไม่พึ่งบริการภายนอก
+
+## รันในเครื่อง
+
+ต้องมี PHP 8.3 ขึ้นไป · MariaDB/MySQL · Node.js (เฉพาะเครื่องมือฝั่ง dev)
 
 ```bash
-npm install
-npm run dev        # http://localhost:3000  → redirects to /en
+cp config/config.example.php config/config.local.php   # แล้วแก้ค่าให้ตรงกับเครื่อง
+php bin/migrate.php                                     # สร้างตาราง
+php bin/import-content.php                              # ใส่เนื้อหาตั้งต้น
+php bin/create-user.php you@example.com admin           # สร้างผู้ดูแลคนแรก
+node build.js                                           # ประกอบหน้าเว็บ
+node verify.js                                          # ชุดตรวจถดถอย
 ```
 
-Other scripts:
+## ขึ้นเว็บจริง
 
-```bash
-npm run build      # production build (statically prerenders /en and /th)
-npm start          # serve the production build
-npm run lint       # ESLint (next/core-web-vitals)
-npm run typecheck  # tsc --noEmit
-```
+อ่าน [DEPLOY.md](DEPLOY.md) ให้จบก่อนลงมือ มีลำดับ 11 ขั้น แผนย้อนกลับรายอาการ
+และรายการสิ่งที่ยังไม่เคยถูกทดสอบ
 
-Open **`/en`** or **`/th`**. `/` redirects to the default language (`/en`) via `middleware.ts`. Switch language from the top bar (EN / TH) or the mobile menu. Click **Request Consultation** (header, hero "Discuss Your Project", or the final CTA) to open the lead form.
+## ห้ามขึ้น Git
 
-## What's implemented
+`config/config.local.php` มีรหัสผ่านฐานข้อมูล · `dist/` มีเครื่องมือสร้างบัญชีผู้ดูแล
+ทั้งสองอย่างถูกกันไว้ใน `.gitignore` แล้ว **ห้ามปลดออก**
 
-- **12-section homepage** (brief §07): top bar, sticky header, hero, trust bar, about, 6 solution cards, featured projects, why-FMK, regional network, knowledge, final CTA, footer.
-- **Sticky header** that shrinks + gains a shadow on scroll, collapses to an **off-canvas mobile menu** below 1120px (Esc to close, body-scroll lock, visible focus).
-- **Consultation modal** — a lead-gen form (11 fields) with client-side validation (required / email / phone / consent), disabled-while-submitting, and an **honest demo state** (“Details captured (demo) — no data was sent”). It never claims a real submission. See the integration point below.
-- **Bilingual EN/TH** via `/[lang]` routes, dictionaries, and `hreflang` alternates. No copy is hard-coded in components.
-- **SEO**: per-language title/description, canonical, Open Graph, Twitter card, `robots.txt`, `sitemap.xml`, web manifest, favicon, and **Organization + WebSite JSON-LD** (verified fields only — no invented ratings/awards/counts).
-- **Accessibility** (brief §10): semantic landmarks, skip link, labelled fields, `aria-modal` dialogs, keyboard Esc, visible focus, 44px touch targets, and `prefers-reduced-motion` support.
+## เอกสารประกอบ
 
-## Project structure
-
-```
-app/
-  [lang]/layout.tsx    Root layout: <html lang>, fonts, providers, header/footer, metadata
-  [lang]/page.tsx      Homepage — assembles all sections + JSON-LD
-  globals.css          Base styles + reveal-on-scroll + reduced-motion
-  robots.ts sitemap.ts manifest.ts icon.svg
-middleware.ts          Locale redirect (/ → /en)
-components/
-  layout/              TopBar, Header (+ mobile menu), Footer, LangSwitch
-  home/                Hero, TrustBar, About, Solutions, FeaturedProjects,
-                       WhyFMK, RegionalNetwork, Knowledge, FinalCTA
-  forms/               ConsultationModal, ConsultationForm
-  providers/           ConsultationProvider (modal state, scroll lock, Esc)
-  ui/                  Container, Eyebrow, Icon, ConsultButton, RevealObserver
-  seo/                 StructuredData (JSON-LD)
-data/
-  company.ts           Verified, language-neutral facts (address, phones, email, social)
-lib/
-  i18n/                en.ts + th.ts dictionaries, getDictionary()
-  types.ts fonts.ts
-tailwind.config.ts     Design tokens (colours, radii, shadows, container width)
-```
-
-## Design tokens (brief §16)
-
-Defined in `tailwind.config.ts`: primary `#0B2F22` (+ `950 #061B14`, `800 #123F2E`), secondary `#3B4148`, accent `#C4A263`, background `#F4F7F5`, surface `#FFFFFF`, text `#17211D`, muted `#68736E`, border `#DCE3DF`. Radii 8/14/22/30px; shadows sm/md/lg; container 1180px. Type: Manrope (EN) + Noto Sans Thai (TH) + IBM Plex Mono (labels), all via `next/font` with `display: swap`.
-
-## Placeholders — need verified content from FMK
-
-These are clearly marked in the UI and must be replaced before launch (see the implementation doc for the full table):
-
-- **Photography**: hero background, about image, project images, article images (marked `PLACEHOLDER — …`).
-- **Featured Projects** (×3): every card shows a **“Project information pending verification”** badge — no project names/clients/values are presented as confirmed.
-- **Knowledge** (×3): marked **“Draft — pending publication”** — no false publish dates.
-- **Partners / Certifications**: section **disabled** behind `SHOW_PARTNERS = false` in `app/[lang]/page.tsx` until real logos/certs are confirmed.
-- **PWA icons** in `app/manifest.ts` and the `logo` URL in `data/company.ts`.
-
-## Connecting the form to a backend
-
-The form is intentionally a **demo** — no data is sent. In `components/forms/ConsultationForm.tsx`, replace the `setTimeout` placeholder in `onSubmit` with a real `POST` (e.g. `await fetch('/api/consultation', …)`), and add server-error handling and anti-spam (honeypot / token) there.
-
-## Verified FMK data used
-
-Legal name, head-office address (Silom, Bangkok), phone/email, the 4 Thailand offices, overseas presence (Laos P.D.R. / Myanmar), real business lines, and real social links — all sourced from fmkintertrade.com. No figures, projects, clients or certifications were invented.
+- [DEPLOY.md](DEPLOY.md) — ขั้นตอนขึ้นเว็บจริงและการอัปเดต
+- [FMK_PROJECT_GUIDE.md](FMK_PROJECT_GUIDE.md) — บันทึกการตัดสินใจทุกข้อ พร้อมเหตุผลและบั๊กที่เจอระหว่างทาง
+- `docs/คู่มือผู้ใช้ระบบหลังบ้าน-FMK.pdf` — คู่มือสำหรับผู้ใช้งาน ไม่ใช่นักพัฒนา

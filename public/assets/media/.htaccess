@@ -1,0 +1,15 @@
+# โฟลเดอร์นี้เก็บไฟล์ที่ผู้ใช้อัปโหลดเข้ามา — ถือว่าไม่น่าไว้ใจเสมอ
+# ระบบตรวจชนิดไฟล์และสร้างรูปใหม่ทับของเดิมอยู่แล้ว ไฟล์นี้คือด่านที่สอง
+Options -Indexes -ExecCGI
+RemoveHandler .php .phtml .phar .cgi .pl .py .sh
+AddType text/plain .php .phtml .phar .cgi .pl .py .sh
+<FilesMatch "\.(php|phtml|php[0-9]|phar|cgi|pl|py|sh|htaccess|htpasswd)$">
+  Require all denied
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>

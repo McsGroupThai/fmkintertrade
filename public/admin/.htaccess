@@ -1,0 +1,17 @@
+# หลังบ้าน — ป้องกันเพิ่มอีกชั้นนอกเหนือจากการตรวจสิทธิ์ในโค้ด
+Options -Indexes
+
+# ไฟล์ที่ขึ้นต้นด้วย _ เป็นไฟล์ภายใน ไม่ควรเรียกตรง ๆ
+<FilesMatch "^_">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set Cache-Control "no-store"
+</IfModule>
+
+# จำกัดให้เข้าหลังบ้านได้เฉพาะบาง IP — เปิดใช้ถ้าต้องการเข้มขึ้น
+# <RequireAll>
+#   Require ip 203.0.113.0/24
+# </RequireAll>

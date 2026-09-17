@@ -1,0 +1,12 @@
+# วางไฟล์นี้ในชื่อ .htaccess ไว้ในโฟลเดอร์ app/ config/ db/ bin/
+# ใช้เฉพาะกรณีจำเป็นต้องวางโฟลเดอร์เหล่านี้ไว้ใต้ public_html
+#
+# ทางที่ปลอดภัยกว่าคือวางไว้ "เหนือ" public_html ซึ่งเว็บเข้าไม่ถึงตั้งแต่แรก
+# ไฟล์นี้เป็นแค่ด่านสำรอง ไม่ใช่ด่านหลัก
+
+Require all denied
+
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
